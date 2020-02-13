@@ -1,0 +1,6 @@
+## Yaml Template
+  server:
+    type: simple
+    connector:
+      type: http
+      port: 8080
