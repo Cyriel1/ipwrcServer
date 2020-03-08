@@ -1,8 +1,12 @@
-package nl.ipwrcServer.resources.resources;
+package nl.ipwrcServer.resources;
 
-import nl.ipwrcServer.resources.dao.UserDAO;
-import nl.ipwrcServer.resources.model.User;
+import com.fasterxml.jackson.annotation.JsonView;
+import io.dropwizard.auth.Auth;
+import nl.ipwrcServer.service.JsonViewService;
+import nl.ipwrcServer.dao.UserDAO;
+import nl.ipwrcServer.model.User;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -19,9 +23,11 @@ public class UserResource {
     @GET
     @Path("/getAll")
     @Produces({MediaType.APPLICATION_JSON})
-    public List<User> getAll(){
+    @JsonView(JsonViewService.Protected.class)
+    @RolesAllowed({"KLANT", "ADMIN"})
+    public List<User> getAll(@Auth User user){
 
-        return userDAO.getAll();
+        return userDAO.getAllUsers();
     }
 
     @GET

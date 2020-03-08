@@ -1,4 +1,4 @@
-package nl.ipwrcServer.resources;
+package nl.ipwrcServer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
