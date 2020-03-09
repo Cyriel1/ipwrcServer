@@ -15,6 +15,7 @@ public class AuthenticatorService implements Authenticator<BasicCredentials, Use
         this.userDAO = userDAO;
     }
 
+
     public Optional<User> authenticate(BasicCredentials credentials){
 
         return userDAO.findByUsernameAndPassword(credentials.getUsername(), credentials.getPassword());

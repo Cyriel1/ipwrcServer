@@ -2,21 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cefa5e31-7058-4432-9717-d19293769ba3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/enums/Roles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/LoginMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/RoleMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/JsonViewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/WebshopApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/WebshopConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/resources/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/UserResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/enums/Roles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/RoleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -32,13 +26,96 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/UserMapper.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/dao/UserDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="136">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="838">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1027#1028#0" expanded="true" />
+                <element signature="e#1061#1062#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/LoginMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/RoleMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/UserMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/JsonViewService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -84,14 +161,14 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/LoginMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/Views.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Role.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/RoleMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/UserResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Role.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/dao/UserDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/UserResource.java" />
       </list>
     </option>
   </component>
@@ -164,15 +241,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ipwrcServer" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IPRWCserver" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ipwrcServer" type="462c0819:PsiDirectoryNode" />
-              <item name="enums" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
@@ -274,6 +342,14 @@
       <option name="presentableId" value="Default" />
       <updated>1578954643151</updated>
     </task>
+    <task id="LOCAL-00001" summary="Voortgang authentication en authorize werkend. Role toegevoegd om te experimenteren met nieuwe tabel.">
+      <created>1583685759078</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583685759078</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -289,7 +365,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19083156" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15991472" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -298,12 +374,12 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.33152762" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.33152762" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32936078" />
       <window_info anchor="bottom" id="Statistic" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
@@ -359,6 +435,14 @@
               <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
                 <collection />
               </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
             </State>
           </value>
         </entry>
@@ -378,6 +462,17 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Voortgang authentication en authorize werkend. Role toegevoegd om te experimenteren met nieuwe tabel." />
+    <option name="LAST_COMMIT_MESSAGE" value="Voortgang authentication en authorize werkend. Role toegevoegd om te experimenteren met nieuwe tabel." />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="credentials" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ConfigurationResource.java" />
@@ -433,27 +528,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/JsonViewService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/RoleMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -474,78 +552,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#945#946#0" expanded="true" />
-            <element signature="e#977#978#0" expanded="true" />
-            <element signature="e#1058#1059#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
-            <element signature="e#1308#1309#0" expanded="true" />
-            <element signature="e#1335#1336#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="419">
           <caret line="43" column="58" lean-forward="true" selection-start-line="43" selection-start-column="58" selection-end-line="43" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/UserResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-            <element signature="e#514#515#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/dao/UserDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="18" column="17" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#329#330#0" expanded="true" />
-            <element signature="e#360#361#0" expanded="true" />
-            <element signature="e#589#590#0" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
-            <element signature="e#649#650#0" expanded="true" />
-            <element signature="e#676#677#0" expanded="true" />
-            <element signature="e#778#779#0" expanded="true" />
-            <element signature="e#815#816#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -557,10 +569,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Role.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="221">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -569,8 +581,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/LoginMapper.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/RoleMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <caret line="15" column="49" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -579,8 +601,69 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/UserMapper.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/JsonViewService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="838">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1027#1028#0" expanded="true" />
+            <element signature="e#1061#1062#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/UserResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/dao/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
