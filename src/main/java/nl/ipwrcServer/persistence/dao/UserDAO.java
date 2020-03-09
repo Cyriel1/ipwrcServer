@@ -1,8 +1,8 @@
-package nl.ipwrcServer.dao;
+package nl.ipwrcServer.persistence.dao;
 
-import nl.ipwrcServer.mapper.LoginMapper;
-import nl.ipwrcServer.mapper.RoleMapper;
-import nl.ipwrcServer.mapper.UserMapper;
+import nl.ipwrcServer.persistence.mapper.LoginMapper;
+import nl.ipwrcServer.persistence.mapper.RoleMapper;
+import nl.ipwrcServer.persistence.mapper.UserMapper;
 import nl.ipwrcServer.model.User;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;

@@ -2,7 +2,7 @@ package nl.ipwrcServer.service;
 
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.basic.BasicCredentials;
-import nl.ipwrcServer.dao.UserDAO;
+import nl.ipwrcServer.persistence.dao.UserDAO;
 import nl.ipwrcServer.model.User;
 
 import java.util.Optional;
@@ -14,7 +14,6 @@ public class AuthenticatorService implements Authenticator<BasicCredentials, Use
     public AuthenticatorService(UserDAO userDAO){
         this.userDAO = userDAO;
     }
-
 
     public Optional<User> authenticate(BasicCredentials credentials){
 

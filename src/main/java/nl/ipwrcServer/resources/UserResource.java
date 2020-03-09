@@ -3,7 +3,7 @@ package nl.ipwrcServer.resources;
 import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.auth.Auth;
 import nl.ipwrcServer.service.JsonViewService;
-import nl.ipwrcServer.dao.UserDAO;
+import nl.ipwrcServer.persistence.dao.UserDAO;
 import nl.ipwrcServer.model.User;
 
 import javax.annotation.security.RolesAllowed;
@@ -23,7 +23,7 @@ public class UserResource {
     @GET
     @Path("/getAll")
     @Produces({MediaType.APPLICATION_JSON})
-    @JsonView(JsonViewService.Protected.class)
+    @JsonView(JsonViewService.Public.class)
     @RolesAllowed({"KLANT", "ADMIN"})
     public List<User> getAll(@Auth User user){
 

@@ -5,7 +5,7 @@ import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.setup.Environment;
-import nl.ipwrcServer.dao.UserDAO;
+import nl.ipwrcServer.persistence.dao.UserDAO;
 import nl.ipwrcServer.model.User;
 import nl.ipwrcServer.resources.UserResource;
 import nl.ipwrcServer.service.AuthenticatorService;
@@ -39,7 +39,7 @@ public class WebshopApplication extends Application<WebshopConfiguration> {
                 new BasicCredentialAuthFilter.Builder<User>()
                         .setAuthenticator(new AuthenticatorService(userDAO))
                         .setAuthorizer(new AuthorizeService(userDAO))
-                        .setRealm("SUPER SECRET STUFF")
+                        .setRealm("WEBSHOP ACCOUNT")
                         .buildAuthFilter()));
         environment.jersey().register(RolesAllowedDynamicFeature.class);
     }
