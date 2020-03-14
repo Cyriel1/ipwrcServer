@@ -13,7 +13,7 @@ public class AuthorizeService implements Authorizer<User> {
         this.userDAO = userDAO;
     }
 
-    public boolean hasRole(String roleName, List<User> roles)
+    private boolean hasRole(String roleName, List<User> roles)
     {
         if (roles != null)
         {
@@ -21,6 +21,7 @@ public class AuthorizeService implements Authorizer<User> {
             {
                 if(roleName.equals(role.getRole()))
                 {
+
                     return true;
                 }
             }

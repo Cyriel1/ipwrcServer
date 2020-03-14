@@ -5,7 +5,6 @@ import io.dropwizard.auth.Auth;
 import nl.ipwrcServer.service.JsonViewService;
 import nl.ipwrcServer.persistence.dao.UserDAO;
 import nl.ipwrcServer.model.User;
-
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

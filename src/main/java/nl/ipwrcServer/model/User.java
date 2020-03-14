@@ -6,7 +6,6 @@ import nl.ipwrcServer.model.builder.UserBuilder;
 import nl.ipwrcServer.service.JsonViewService;
 import javax.validation.constraints.NotEmpty;
 import java.security.Principal;
-import java.util.List;
 
 public class User implements Principal {
 
@@ -54,5 +53,4 @@ public class User implements Principal {
     public String getName() {
         return username;
     }
-
 }

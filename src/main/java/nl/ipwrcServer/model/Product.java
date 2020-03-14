@@ -1,62 +1,57 @@
 package nl.ipwrcServer.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import nl.ipwrcServer.model.builder.ProductBuilder;
+import nl.ipwrcServer.service.JsonViewService;
+import javax.validation.constraints.NotEmpty;
+
 public class Product {
 
+    @NotEmpty
+    @JsonView(JsonViewService.Public.class)
     private int productID;
 
+    @NotEmpty
+    @JsonView(JsonViewService.Public.class)
     private String productName;
 
+    @NotEmpty
+    @JsonView(JsonViewService.Public.class)
     private float productPrice;
 
+    @JsonView(JsonViewService.Public.class)
     private String productDescription;
+
+    @NotEmpty
+    @JsonView(JsonViewService.Public.class)
+    private String productStatus;
+
+    public Product(ProductBuilder productBuilder){
+        this.productID = productBuilder.getProductID();
+        this.productName = productBuilder.getProductName();
+        this.productPrice = productBuilder.getProductPrice();
+        this.productDescription = productBuilder.getProductDescription();
+        this.productStatus = productBuilder.getProductStatus();
+    }
 
     public int getProductID() {
         return productID;
-    }
-
-    public void setProductID(int productID) {
-        this.productID = productID;
     }
 
     public String getProductName() {
         return productName;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
     public float getProductPrice() {
         return productPrice;
-    }
-
-    public void setProductPrice(float productPrice) {
-        this.productPrice = productPrice;
     }
 
     public String getProductDescription() {
         return productDescription;
     }
 
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
-
     public String getProductStatus() {
         return productStatus;
     }
 
-    public void setProductStatus(String productStatus) {
-        this.productStatus = productStatus;
-    }
-
-    private String productStatus;
-
-    public Product(Product product){
-        this.productID = product.productID;
-        this.productName = product.productName;
-        this.productPrice = product.productPrice;
-        this.productDescription = product.productDescription;
-        this.productStatus = product.productStatus;
-    }
 }
