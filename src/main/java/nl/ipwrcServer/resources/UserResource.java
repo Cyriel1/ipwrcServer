@@ -3,7 +3,7 @@ package nl.ipwrcServer.resources;
 import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.auth.Auth;
 import nl.ipwrcServer.service.JsonViewService;
-import nl.ipwrcServer.persistence.dao.UserDAO;
+import nl.ipwrcServer.persistence.UserDAO;
 import nl.ipwrcServer.model.User;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;

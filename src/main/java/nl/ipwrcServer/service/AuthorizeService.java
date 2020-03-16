@@ -1,7 +1,7 @@
 package nl.ipwrcServer.service;
 
 import io.dropwizard.auth.Authorizer;
-import nl.ipwrcServer.persistence.dao.UserDAO;
+import nl.ipwrcServer.persistence.UserDAO;
 import nl.ipwrcServer.model.User;
 import java.util.List;
 

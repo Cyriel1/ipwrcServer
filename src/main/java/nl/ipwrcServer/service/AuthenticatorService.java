@@ -2,7 +2,7 @@ package nl.ipwrcServer.service;
 
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.basic.BasicCredentials;
-import nl.ipwrcServer.persistence.dao.UserDAO;
+import nl.ipwrcServer.persistence.UserDAO;
 import nl.ipwrcServer.model.User;
 
 import java.util.Optional;

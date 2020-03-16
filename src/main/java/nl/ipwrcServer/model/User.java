@@ -2,7 +2,6 @@ package nl.ipwrcServer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import nl.ipwrcServer.model.builder.UserBuilder;
 import nl.ipwrcServer.service.JsonViewService;
 import javax.validation.constraints.NotEmpty;
 import java.security.Principal;
@@ -25,13 +24,6 @@ public class User implements Principal {
     @JsonView(JsonViewService.Public.class)
     private String role;
 
-    public User(UserBuilder userBuilder){
-        this.userID = userBuilder.getUserID();
-        this.username = userBuilder.getUsername();
-        this.password = userBuilder.getPassword();
-        this.role = userBuilder.getRole();
-    }
-
     public long getUserID() {
         return userID;
     }
@@ -46,6 +38,22 @@ public class User implements Principal {
 
     public String getRole(){
         return role;
+    }
+
+    public void setUserID(long userID) {
+        this.userID = userID;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
