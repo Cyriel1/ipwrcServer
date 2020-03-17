@@ -17,6 +17,7 @@ public interface UserDAO {
 
     @SqlQuery("SELECT `role` FROM `Role` INNER JOIN `User` ON `Role`.`roleID` = `User`.`userID` WHERE `username` = :username AND `password` = :password")
     List<User> checkUserRole(@BindBean User user);
+
 }
 
 

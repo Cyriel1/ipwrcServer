@@ -22,3 +22,8 @@
     checkConnectionWhileIdle: false
     evictionInterval: 10s
     minIdleTime: 1 minute
+
+  cors:
+      allowedHeaders: "*"
+      allowedMethods: "X-Requested-With,Content-Type,Accept,Origin"
+      allowedOrigins: "OPTIONS,GET,PUT,POST,DELETE,HEAD"

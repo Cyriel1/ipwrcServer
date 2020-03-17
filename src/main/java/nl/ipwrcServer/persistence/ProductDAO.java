@@ -8,4 +8,5 @@ public interface ProductDAO {
 
     @SqlQuery("SELECT * FROM `Product`")
     List<Product> getAllProducts();
+
 }

@@ -1,4 +1,4 @@
-package nl.ipwrcServer;
+package nl.ipwrcServer.configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
@@ -12,6 +12,10 @@ public class WebshopConfiguration extends Configuration {
     @NotNull
     private DataSourceFactory database = new DataSourceFactory();
 
+    @Valid
+    @NotNull
+    private CrossOriginFilterFactory cors = new CrossOriginFilterFactory();
+
     @JsonProperty("database")
     public void setDataSourceFactory(DataSourceFactory factory) {
         this.database = factory;
@@ -21,4 +25,15 @@ public class WebshopConfiguration extends Configuration {
     public DataSourceFactory getDataSourceFactory() {
         return database;
     }
+
+    @JsonProperty("cors")
+    public void setCors(CrossOriginFilterFactory cors) {
+        this.cors = cors;
+    }
+
+    @JsonProperty("cors")
+    public CrossOriginFilterFactory getCors() {
+        return cors;
+    }
+
 }
