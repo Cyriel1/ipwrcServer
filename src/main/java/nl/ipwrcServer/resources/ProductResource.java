@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import nl.ipwrcServer.model.Product;
 import nl.ipwrcServer.persistence.ProductDAO;
 import nl.ipwrcServer.service.JsonViewService;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;

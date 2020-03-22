@@ -6,7 +6,6 @@ import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.persistence.AccountDAO;
 import nl.ipwrcServer.service.AuthenticatorService;
 import nl.ipwrcServer.service.JsonViewService;
-
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -35,10 +34,21 @@ public class AccountResource {
 
     @POST
     @Path("/getCredentials")
-    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
     @JsonView(JsonViewService.Public.class)
     public String getToken(Account loginCredentials){
 
         return authenticatorService.receiveTokenAfterValidation(loginCredentials);
     }
+
+    @POST
+    @Path("/getRegisterCredentials")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @JsonView(JsonViewService.Public.class)
+    public void getRegisterCredentials(Account registerCredentials){
+
+        authenticatorService.registerAccount(registerCredentials);
+    }
+
+
 }

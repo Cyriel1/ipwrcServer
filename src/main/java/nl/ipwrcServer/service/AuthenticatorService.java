@@ -10,6 +10,7 @@ import io.dropwizard.auth.Authenticator;
 import nl.ipwrcServer.configuration.WebshopConfiguration;
 import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.persistence.AccountDAO;
+import org.mindrot.jbcrypt.BCrypt;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -61,10 +62,48 @@ public class AuthenticatorService implements Authenticator<String, Account> {
         }
     }
 
-    public String receiveTokenAfterValidation(Account loginCredentials){
-        Account userAccount = accountDAO.findByUsernameAndPassword(loginCredentials);
+    public boolean verifyHash(String password, String hashed){
+
+        return BCrypt.checkpw(password, hashed);
+    }
+
+    public String hashPassword(String password, int logRounds){
+
+        return  BCrypt.hashpw(password, BCrypt.gensalt(logRounds));
+    }
+
+    public void registerAccount(Account registerCredentials){
         try {
-            if(userAccount.getPassword().equals(loginCredentials.getPassword())){
+            if(validateIfUsernameIsUnique(registerCredentials)){
+                String hashedPassword = hashPassword(registerCredentials.getPassword(), 11);
+                registerCredentials.setPassword(hashedPassword);
+                accountDAO.registerAccount(registerCredentials);
+            }
+        }catch (Exception exception){
+
+        }
+    }
+
+    public boolean validateIfUsernameIsUnique(Account registerCredentials){
+        List<Account> allAccounts = accountDAO.getAllUsernames();
+
+        if(allAccounts != null){
+            for(Account account : allAccounts){
+                if(account.getUsername().equals(registerCredentials.getUsername())){
+
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public String receiveTokenAfterValidation(Account loginCredentials){
+        Account userAccount = accountDAO.findByUsername(loginCredentials);
+        try {
+            if(verifyHash(loginCredentials.getPassword(), userAccount.getPassword())){
+
 
                 return createJwtToken(userAccount);
             }
