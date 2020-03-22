@@ -1,4 +1,3 @@
-## Yaml Template
   server:
     type: simple
     connector:
@@ -27,3 +26,7 @@
       allowedHeaders: "*"
       allowedMethods: "X-Requested-With,Content-Type,Accept,Origin"
       allowedOrigins: "OPTIONS,GET,PUT,POST,DELETE,HEAD"
+
+  jwt:
+    author: "http://arcadegamegrounds.com"
+    signature: "C4h0LNGccV66798@%JC*msWeRt2000"

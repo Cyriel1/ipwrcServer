@@ -16,6 +16,10 @@ public class WebshopConfiguration extends Configuration {
     @NotNull
     private CrossOriginFilterFactory cors = new CrossOriginFilterFactory();
 
+    @Valid
+    @NotNull
+    private JwtTokenFactory jwt = new JwtTokenFactory();
+
     @JsonProperty("database")
     public void setDataSourceFactory(DataSourceFactory factory) {
         this.database = factory;
@@ -34,6 +38,16 @@ public class WebshopConfiguration extends Configuration {
     @JsonProperty("cors")
     public CrossOriginFilterFactory getCors() {
         return cors;
+    }
+
+    @JsonProperty("jwt")
+    public JwtTokenFactory getJwt() {
+        return jwt;
+    }
+
+    @JsonProperty("jwt")
+    public void setJwt(JwtTokenFactory jwt) {
+        this.jwt = jwt;
     }
 
 }

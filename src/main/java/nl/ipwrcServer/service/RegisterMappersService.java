@@ -1,5 +1,6 @@
 package nl.ipwrcServer.service;
 
+import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.model.Product;
 import nl.ipwrcServer.model.User;
 import org.jdbi.v3.core.Jdbi;
@@ -9,7 +10,8 @@ public class RegisterMappersService {
 
     private Jdbi jdbi;
 
-    private final Class[] registerClasses = new Class[] {
+    private final Class[] registerRowClasses = new Class[] {
+            Account.class,
             User.class,
             Product.class
     };
@@ -19,8 +21,8 @@ public class RegisterMappersService {
     }
 
     public void registerMappersToModels(){
-        for(Class registerClass : registerClasses){
-            jdbi.registerRowMapper(BeanMapper.factory(registerClass));
+        for(Class registerRowClass : registerRowClasses){
+            jdbi.registerRowMapper(BeanMapper.factory(registerRowClass));
         }
     }
 

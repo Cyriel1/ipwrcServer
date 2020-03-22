@@ -1,12 +1,7 @@
 package nl.ipwrcServer.configuration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.dropwizard.jetty.setup.ServletEnvironment;
-import org.eclipse.jetty.servlets.CrossOriginFilter;
-import javax.servlet.DispatcherType;
-import javax.servlet.FilterRegistration;
 import javax.validation.constraints.NotEmpty;
-import java.util.EnumSet;
 
 public class CrossOriginFilterFactory {
 
@@ -53,17 +48,6 @@ public class CrossOriginFilterFactory {
     @JsonProperty
     public void setAllowedMethods(String allowedMethods) {
         this.allowedMethods = allowedMethods;
-    }
-
-    public void registerCorsFilter(ServletEnvironment servletEnvironment){
-        final FilterRegistration.Dynamic filter = servletEnvironment.addFilter("CrossOriginFilter", CrossOriginFilter.class);
-
-        filter.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, getAllowedOrigins());
-        filter.setInitParameter(CrossOriginFilter.ALLOWED_HEADERS_PARAM, getAllowedHeaders());
-        filter.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM, getAllowedMethods());
-
-        filter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
-        filter.setInitParameter(CrossOriginFilter.CHAIN_PREFLIGHT_PARAM, Boolean.FALSE.toString());
     }
 
 }
