@@ -1,7 +1,6 @@
 package nl.ipwrcServer.service;
 
 import io.dropwizard.auth.AuthDynamicFeature;
-import io.dropwizard.auth.oauth.OAuthCredentialAuthFilter;
 import io.dropwizard.setup.Environment;
 import nl.ipwrcServer.configuration.WebshopConfiguration;
 import nl.ipwrcServer.model.Account;
@@ -24,6 +23,8 @@ public class RegisterResourcesService {
     private Environment environment;
     private WebshopConfiguration webshopConfiguration;
     private AuthenticatorService authenticatorService;
+    private TokenService tokenService;
+    private RegisterAccountService registerAccountService;
 
     private AccountDAO accountDAO;
     private UserDAO userDAO;
@@ -47,21 +48,25 @@ public class RegisterResourcesService {
         userDAO = jdbi.onDemand(UserDAO.class);
         productDAO = jdbi.onDemand(ProductDAO.class);
         authenticatorService = new AuthenticatorService(accountDAO, webshopConfiguration);
+        tokenService = new TokenService(accountDAO, webshopConfiguration);
+        registerAccountService = new RegisterAccountService(accountDAO);
     }
 
     public void registerResources(){
-        environment.jersey().register(new AccountResource(accountDAO, authenticatorService));
+        environment.jersey().register(new AccountResource(accountDAO, tokenService, registerAccountService));
         environment.jersey().register(new UserResource(userDAO));
         environment.jersey().register(new ProductResource(productDAO));
     }
 
     public void registerAuthentication(){
+        final String PREFIX = "Bearer";
+        final String REALM = "Webshop ArcadeAccount";
         environment.jersey().register(new AuthDynamicFeature(
-                new OAuthCredentialAuthFilter.Builder<Account>()
+                new OAuthJwtAndCsrfCredentialAuthFilter.Builder<Account>()
                         .setAuthenticator(authenticatorService)
                         .setAuthorizer(new AuthorizeService())
-                        .setPrefix("Bearer")
-                        .setRealm("WEBSHOP ACCOUNT")
+                        .setPrefix(PREFIX)
+                        .setRealm(REALM)
                         .buildAuthFilter()));
         environment.jersey().register(RolesAllowedDynamicFeature.class);
     }

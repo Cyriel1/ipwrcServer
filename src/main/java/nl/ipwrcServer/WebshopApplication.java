@@ -15,7 +15,7 @@ public class WebshopApplication extends Application<WebshopConfiguration> {
     }
 
     @Override
-    public void run(WebshopConfiguration webshopConfiguration, Environment environment) throws Exception {
+    public void run(WebshopConfiguration webshopConfiguration, Environment environment) {
         final JdbiFactory factory = new JdbiFactory();
         final Jdbi jdbi = factory.build(environment, webshopConfiguration.getDataSourceFactory(), "mysql");
         new RegisterResourcesService(jdbi, environment, webshopConfiguration).bundle();

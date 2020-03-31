@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.auth.Auth;
 import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.persistence.AccountDAO;
-import nl.ipwrcServer.service.AuthenticatorService;
 import nl.ipwrcServer.service.JsonViewService;
+import nl.ipwrcServer.service.RegisterAccountService;
+import nl.ipwrcServer.service.TokenService;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -15,11 +18,13 @@ import java.util.List;
 public class AccountResource {
 
     private AccountDAO accountDAO;
-    private AuthenticatorService authenticatorService;
+    private TokenService tokenService;
+    private RegisterAccountService registerAccountService;
 
-    public AccountResource(AccountDAO accountDAO, AuthenticatorService authenticatorService){
+    public AccountResource(AccountDAO accountDAO, TokenService tokenService, RegisterAccountService registerAccountService){
         this.accountDAO = accountDAO;
-        this.authenticatorService = authenticatorService;
+        this.tokenService = tokenService;
+        this.registerAccountService = registerAccountService;
     }
 
     @GET
@@ -38,7 +43,7 @@ public class AccountResource {
     @JsonView(JsonViewService.Public.class)
     public String getToken(Account loginCredentials){
 
-        return authenticatorService.receiveTokenAfterValidation(loginCredentials);
+        return tokenService.receiveTokenAfterValidation(loginCredentials);
     }
 
     @POST
@@ -47,7 +52,7 @@ public class AccountResource {
     @JsonView(JsonViewService.Public.class)
     public void getRegisterCredentials(Account registerCredentials){
 
-        authenticatorService.registerAccount(registerCredentials);
+        registerAccountService.registerAccount(registerCredentials);
     }
 
 

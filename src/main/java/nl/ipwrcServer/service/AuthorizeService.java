@@ -5,6 +5,12 @@ import nl.ipwrcServer.model.Account;
 
 public class AuthorizeService implements Authorizer<Account> {
 
+    private LoggerService loggerService;
+
+    public AuthorizeService(){
+        this.loggerService = new LoggerService(AuthorizeService.class);
+    }
+
     private boolean hasRole(String roleName, Account account){
         if (account != null){
             for(String role : account.getRoles()){
@@ -14,6 +20,7 @@ public class AuthorizeService implements Authorizer<Account> {
                 }
             }
         }
+        loggerService.getWebLogger().warn(loggerService.getNO_AUTHORITY());
 
         return false;
     }
