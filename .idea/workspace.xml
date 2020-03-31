@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cefa5e31-7058-4432-9717-d19293769ba3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/builder/ProductBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/dao/ProductDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ProductResource.java" afterDir="false" />
+    <list default="true" id="2d044cae-d95f-4002-a0fc-36f0b15fa606" name="Default Changelist" comment="deploy test2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Token.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/LoggerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/OAuthJwtAndCsrfCredentialAuthFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/RegisterAccountService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/TokenService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/logs/general/general-0.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/logs/requests/request-0.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/LoginMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/LoginMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/ProductMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/RoleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/RoleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/UserResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/configuration/JwtTokenFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/configuration/JwtTokenFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/AccountDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/AccountResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/AccountResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ProductResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ProductResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/RegisterResourcesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/RegisterResourcesService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,64 +34,40 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="37" column="107" lean-forward="true" selection-start-line="37" selection-start-column="107" selection-end-line="37" selection-end-column="107" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
         <option value="Interface" />
+        <option value="HTML File" />
         <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>co</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RESET_MODE" value="HARD" />
+    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ConfigurationResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ServiceResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/IprwcServerApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/resources/GreetingResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/IprwcApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/resources/HelloWorldResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/model/Employee.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/HelloDropwizardConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/dao/UserDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/HelloDropwizardApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/dao/UserDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/WebshopApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/resources/UserResource.java" />
-        <option value="$PROJECT_DIR$/config.yml" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/WebshopConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/model/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/mapper/UserMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/enums/Roles.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticationService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/LoginMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/Views.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Role.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/RoleMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/mapper/ProductMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/dao/UserDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/builder/UserBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/builder/ProductBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/ProductMapper.java" />
@@ -97,14 +76,45 @@
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/RoleMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/LoginMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/JwtCredentialAuthFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/OAuthenticatorService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/JdbiRegisterService.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Product.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/CrossOriginFilterFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopConfiguration.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/ProductDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/UserResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ProductResource.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/UserDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Role.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/RegisterMappersService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/JsonViewService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/configuration/JwtTokenFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/configuration/WebshopConfiguration.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/JbcryptService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/AccountDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ProductResource.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/logs/requests/test.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/banner.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Account.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/LoggerService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/RegisterService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/AccountResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Token.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/CustomOAuthCredentialAuthFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/configuration/CrossOriginFilterFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/configuration/JwtTokenFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/RegisterAccountService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/TokenService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/RegisterResourcesService.java" />
+        <option value="$PROJECT_DIR$/config.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/OAuthJwtAndCsrfCredentialAuthFilter.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/logs/general/general-0.log" />
+        <option value="$PROJECT_DIR$/src/main/resources/logs/requests/request-0.log" />
       </list>
     </option>
   </component>
@@ -125,18 +135,15 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="952" />
-    <option name="y" value="-8" />
-    <option name="width" value="976" />
-    <option name="height" value="1056" />
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -177,6 +184,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ipwrcServer" type="462c0819:PsiDirectoryNode" />
+              <item name="configuration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IPRWCserver" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ipwrcServer" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -195,41 +211,123 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="ipwrcServer" type="462c0819:PsiDirectoryNode" />
-              <item name="persistence" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IPRWCserver" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ipwrcServer" type="462c0819:PsiDirectoryNode" />
-              <item name="persistence" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IPRWCserver" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="ipwrcServer" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IPRWCserver" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ipwrcServer" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IPRWCserver" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IPRWCserver" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="logs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IPRWCserver" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="logs" type="462c0819:PsiDirectoryNode" />
+              <item name="general" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IPRWCserver" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="logs" type="462c0819:PsiDirectoryNode" />
+              <item name="requests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IPRWCserver" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: io.dropwizard:dropwizard-auth:2.0.0" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: io.dropwizard:dropwizard-auth:2.0.0" type="70bed36:NamedLibraryElementNode" />
+              <item name="dropwizard-auth-2.0.0.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: io.dropwizard:dropwizard-auth:2.0.0" type="70bed36:NamedLibraryElementNode" />
+              <item name="dropwizard-auth-2.0.0.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: io.dropwizard:dropwizard-auth:2.0.0" type="70bed36:NamedLibraryElementNode" />
+              <item name="dropwizard-auth-2.0.0.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="basic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: io.dropwizard:dropwizard-auth:2.0.0" type="70bed36:NamedLibraryElementNode" />
+              <item name="dropwizard-auth-2.0.0.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="chained" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IPRWCserver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: io.dropwizard:dropwizard-auth:2.0.0" type="70bed36:NamedLibraryElementNode" />
+              <item name="dropwizard-auth-2.0.0.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="oauth" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Bureaublad/DropWizardExample" />
+    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Bureaublad/IPRWCPROJECT/iprwcClient" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cyrie\IdeaProjects\IPRWCserver\src\main\resources\logs" />
+      <recent name="C:\Users\cyrie\IdeaProjects\IPRWCserver\src\main\resources\generalLogs" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -264,7 +362,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cefa5e31-7058-4432-9717-d19293769ba3" name="Default Changelist" comment="" />
+      <changelist id="2d044cae-d95f-4002-a0fc-36f0b15fa606" name="Default Changelist" comment="deploy test2" />
       <created>1578954643151</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -291,7 +389,35 @@
       <option name="project" value="LOCAL" />
       <updated>1583782052825</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="14-3-2020">
+      <created>1584207256930</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1584207256930</updated>
+    </task>
+    <task id="LOCAL-00005" summary="OAuthJWT refactoren">
+      <created>1584384692616</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1584384692616</updated>
+    </task>
+    <task id="LOCAL-00006" summary="OAuthJWT code 100% gerefactored. Hierna: jwt token authentication implementeren.">
+      <created>1584403444944</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1584403444944</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Jwt token geïmplementeerd meer gerefactored. Hierna: BCrypt toepassen">
+      <created>1584887500108</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1584887500108</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView">
@@ -305,9 +431,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17430703" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23773988" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -316,16 +441,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.33152762" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.23726977" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3261105" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32936078" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32932165" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.2822757" />
       <window_info anchor="bottom" id="Statistic" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32932165" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32827735" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32719395" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -335,6 +460,35 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17963752" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.23726977" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3261105" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32932165" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.2822757" />
+      <window_info anchor="bottom" id="Statistic" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32932165" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32719395" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.19722815" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -380,7 +534,11 @@
     <MESSAGE value="Voortgang authentication en authorize werkend. Role toegevoegd om te experimenteren met nieuwe tabel." />
     <MESSAGE value="Authorizer werkt" />
     <MESSAGE value="Builder geïmplementeerd" />
-    <option name="LAST_COMMIT_MESSAGE" value="Builder geïmplementeerd" />
+    <MESSAGE value="14-3-2020" />
+    <MESSAGE value="OAuthJWT refactoren" />
+    <MESSAGE value="OAuthJWT code 100% gerefactored. Hierna: jwt token authentication implementeren." />
+    <MESSAGE value="Jwt token geïmplementeerd meer gerefactored. Hierna: BCrypt toepassen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Jwt token geïmplementeerd meer gerefactored. Hierna: BCrypt toepassen" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -390,162 +548,109 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ConfigurationResource.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ServiceResource.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/IprwcServerApplication.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-core/2.0.0/dropwizard-core-2.0.0.jar!/io/dropwizard/Configuration.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/model/Employee.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generalLogs/generalLogs-2020-03-30-0.log" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generalLogs/generalLogs-2020-03-30-3.log" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generalLogs/generalLogs-2020-03-30-4.log" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generalLogs/generalLogs-2.log" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/generalLogs/generalLogs-1.log" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logs/requests/test.html" />
     <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-jdbi3/2.0.0/dropwizard-jdbi3-2.0.0.jar!/io/dropwizard/jdbi3/JdbiFactory.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="39" column="125" selection-start-line="39" selection-start-column="125" selection-end-line="39" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jdbi/jdbi3-sqlobject/3.11.1/jdbi3-sqlobject-3.11.1.jar!/org/jdbi/v3/sqlobject/statement/SqlQuery.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jdbi/jdbi3-core/3.11.1/jdbi3-core-3.11.1.jar!/org/jdbi/v3/core/Jdbi.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4244">
-          <caret line="300" column="17" selection-start-line="300" selection-start-column="17" selection-end-line="300" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/sql/ResultSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="4281" column="91" selection-start-line="4281" selection-start-column="91" selection-end-line="4281" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/enums/Roles.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Role.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/test.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/LoginMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="51" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="51" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/builder/UserBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="-51">
+          <caret line="26" column="11" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="11" />
           <folding>
-            <element signature="e#922#923#0" expanded="true" />
-            <element signature="e#959#960#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+            <element signature="e#975#976#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/security/Principal.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/banner.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="76" column="67" lean-forward="true" selection-start-line="76" selection-start-column="67" selection-end-line="76" selection-end-column="67" />
+        <state>
+          <caret column="100" selection-start-column="100" selection-end-column="100" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/AuthFilter.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/UserResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IPRWCserver.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar!/javax/servlet/FilterRegistration.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar!/javax/servlet/DispatcherType.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        <state relative-caret-position="289">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/ProductResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+        <state relative-caret-position="455">
+          <caret line="29" column="22" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-core/2.0.0/dropwizard-core-2.0.0.jar!/io/dropwizard/setup/Environment.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/Authenticator.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="102" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="119">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-servlets/9.4.24.v20191120/jetty-servlets-9.4.24.v20191120.jar!/org/eclipse/jetty/servlets/CrossOriginFilter.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/chained/ChainedAuthFilter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/builder/ProductBuilder.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/basic/BasicCredentials.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
-            <element signature="e#986#987#0" expanded="true" />
-            <element signature="e#1018#1019#0" expanded="true" />
-            <element signature="e#1056#1057#0" expanded="true" />
-            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#0#1249#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/dao/ProductDAO.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/oauth/OAuthCredentialAuthFilter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="323">
+          <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/basic/BasicCredentialAuthFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/AuthFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="33" column="122" lean-forward="true" selection-start-line="33" selection-start-column="122" selection-end-line="33" selection-end-column="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/configuration/WebshopConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Account.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="46" column="23" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+        <state relative-caret-position="-114">
+          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -554,127 +659,109 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/AuthenticationException.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="-1151">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/Authenticator.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/AccountDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="54" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/util/Optional.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/AccountResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3680">
-          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+        <state relative-caret-position="725">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_202/src.zip!/java/util/Objects.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="126" column="22" selection-start-line="126" selection-start-column="22" selection-end-line="126" selection-end-column="22" />
-          <folding>
-            <element signature="e#3914#3915#0" expanded="true" />
-            <element signature="e#3960#3961#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="202" selection-start-line="202" selection-end-line="202" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/dao/UserDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/configuration/CrossOriginFilterFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/resources/UserResource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/configuration/JwtTokenFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#525#526#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/AuthDynamicFeature.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/RegisterAccountService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/RegisterMappersService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/eclipse/jetty/jetty-servlets/9.4.24.v20191120/jetty-servlets-9.4.24.v20191120.jar!/org/eclipse/jetty/servlets/CrossOriginFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/LoggerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="74" selection-start-line="10" selection-start-column="74" selection-end-line="10" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.29.1/jersey-server-2.29.1.jar!/org/glassfish/jersey/server/filter/RolesAllowedDynamicFeature.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/ProductMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#398#399#0" expanded="true" />
-            <element signature="e#436#437#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/basic/BasicCredentials.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="47" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-            <element signature="e#349#350#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/Authorizer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -685,54 +772,176 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopConfiguration.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthorizeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/AuthenticatorService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/RegisterResourcesService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="78" column="125" selection-start-line="78" selection-start-column="125" selection-end-line="78" selection-end-column="125" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/TokenService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="80" column="37" lean-forward="true" selection-start-line="80" selection-start-column="37" selection-end-line="80" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.29.1/jersey-server-2.29.1.jar!/org/glassfish/jersey/server/internal/process/MappableException.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#382#383#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.29.1/jersey-common-2.29.1.jar!/org/glassfish/jersey/message/internal/TracingLogger.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="94" selection-start-line="94" selection-end-line="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.29.1/jersey-server-2.29.1.jar!/org/glassfish/jersey/server/ContainerFilteringStage.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.29.1/jersey-server-2.29.1.jar!/org/glassfish/jersey/server/internal/process/RequestProcessingContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.29.1/jersey-server-2.29.1.jar!/org/glassfish/jersey/server/internal/monitoring/CompositeRequestEventListener.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/metrics/metrics-jersey2/4.1.2/metrics-jersey2-4.1.2.jar!/com/codahale/metrics/jersey2/InstrumentedResourceMethodApplicationListener.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="374" selection-start-line="374" selection-end-line="374" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.29.1/jersey-server-2.29.1.jar!/org/glassfish/jersey/server/internal/monitoring/RequestEventImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+          <folding>
+            <element signature="e#2699#2700#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logs/general/general-0.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/logs/requests/request-0.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/service/OAuthJwtAndCsrfCredentialAuthFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/persistence/mapper/RoleMapper.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.29.1/jersey-common-2.29.1.jar!/org/glassfish/jersey/internal/util/collection/KeyComparatorLinkedHashMap.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="181">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.29.1/jersey-common-2.29.1.jar!/org/glassfish/jersey/internal/util/collection/KeyComparatorHashMap.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="175" selection-start-line="175" selection-end-line="175" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#2869#2870#0" expanded="true" />
+            <element signature="e#2920#2921#0" expanded="true" />
+            <element signature="e#2960#2961#0" expanded="true" />
+            <element signature="e#2998#2999#0" expanded="true" />
+            <element signature="e#3400#3401#0" expanded="true" />
+            <element signature="e#3437#3438#0" expanded="true" />
+            <element signature="e#3597#3598#0" expanded="true" />
+            <element signature="e#3695#3696#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/basic/BasicCredentialAuthFilter.class">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.29.1/jersey-common-2.29.1.jar!/org/glassfish/jersey/internal/util/collection/StringIgnoreCaseKeyComparator.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="896">
-          <caret line="65" column="15" selection-start-line="65" selection-start-column="15" selection-end-line="65" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/dropwizard/dropwizard-auth/2.0.0/dropwizard-auth-2.0.0.jar!/io/dropwizard/auth/oauth/OAuthCredentialAuthFilter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="44" column="65" lean-forward="true" selection-start-line="44" selection-start-column="65" selection-end-line="44" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/WebshopApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="37" column="107" lean-forward="true" selection-start-line="37" selection-start-column="107" selection-end-line="37" selection-end-column="107" />
+        <state relative-caret-position="272">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#497#498#0" expanded="true" />
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.29.1/jersey-common-2.29.1.jar!/org/glassfish/jersey/message/internal/InboundMessageContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="179" selection-start-line="179" selection-end-line="179" />
+          <folding>
+            <element signature="e#6270#6271#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/nl/ipwrcServer/model/Token.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>

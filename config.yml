@@ -1,24 +1,46 @@
-## Yaml Template
   server:
     type: simple
     connector:
       type: http
       port: 8080
+    requestLog:
+      appenders:
+        - type: console
+        - type: file
+          currentLogFilename: src\main\resources\logs\requests\request-0.log
+          queueSize: 512
+          archive: true
+          archivedLogFilenamePattern: src\main\resources\logs\requests\request-%i.log
+          archivedFileCount: 35
+          maxFileSize: 25MiB
+          logFormat: '%h %l %u [%t] "%r" %s %b "%i{Referer}" "%i{User-Agent}"'
 
   database:
     driverClass: com.mysql.jdbc.Driver
     user: Cyriel
     password: WeRt2000
     url: jdbc:mysql://mysql.stackcp.com:50409/arcadeground-3132336328
-
-    properties:
-      charSet: UTF-8
-
-    maxWaitForConnection: 1s
-    validationQuery: "SELECT 1"
     validationQueryTimeout: 3s
-    minSize: 8
-    maxSize: 32
-    checkConnectionWhileIdle: false
-    evictionInterval: 10s
-    minIdleTime: 1 minute
+
+  cors:
+      allowedOrigins: "http://localhost:4200"
+      allowedHeaders: "X-Csrf-Protection,Authorization,X-Requested-With,Content-Type,Accept,Origin"
+      allowedMethods: "OPTIONS,GET,PUT,POST,DELETE,HEAD"
+
+  jwt:
+    author: "http://arcadegamegrounds.com"
+    signature: "LGcDFGEEdgreW346rDwHYhsEtuHfCsFhKIPOJQYDBVSRhdeDhyUKGcfr#%*HFD469GGHKT%3354689JGFVGJT$R$%Y*K&JHREF"
+
+  logging:
+    level: INFO
+    appenders:
+      - type: console
+      - type: file
+        currentLogFilename: src\main\resources\logs\general\general-0.log
+        threshold: ALL
+        queueSize: 512
+        archive: true
+        archivedLogFilenamePattern: src\main\resources\logs\general\general-%i.log
+        archivedFileCount: 35
+        maxFileSize: 25MiB
+        logFormat: "%-5p [%d] %c: %m%n%rEx"

@@ -1,7 +1,6 @@
 package nl.ipwrcServer.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import nl.ipwrcServer.model.builder.ProductBuilder;
 import nl.ipwrcServer.service.JsonViewService;
 import javax.validation.constraints.NotEmpty;
 
@@ -26,14 +25,6 @@ public class Product {
     @JsonView(JsonViewService.Public.class)
     private String productStatus;
 
-    public Product(ProductBuilder productBuilder){
-        this.productID = productBuilder.getProductID();
-        this.productName = productBuilder.getProductName();
-        this.productPrice = productBuilder.getProductPrice();
-        this.productDescription = productBuilder.getProductDescription();
-        this.productStatus = productBuilder.getProductStatus();
-    }
-
     public int getProductID() {
         return productID;
     }
@@ -52,6 +43,26 @@ public class Product {
 
     public String getProductStatus() {
         return productStatus;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setProductPrice(float productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
+    }
+
+    public void setProductStatus(String productStatus) {
+        this.productStatus = productStatus;
     }
 
 }

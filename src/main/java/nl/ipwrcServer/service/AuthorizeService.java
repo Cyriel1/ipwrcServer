@@ -1,39 +1,34 @@
 package nl.ipwrcServer.service;
 
 import io.dropwizard.auth.Authorizer;
-import nl.ipwrcServer.persistence.dao.UserDAO;
-import nl.ipwrcServer.model.User;
-import java.util.List;
+import nl.ipwrcServer.model.Account;
 
-public class AuthorizeService implements Authorizer<User> {
+public class AuthorizeService implements Authorizer<Account> {
 
-    private UserDAO userDAO;
+    private LoggerService loggerService;
 
-    public AuthorizeService(UserDAO userDAO){
-        this.userDAO = userDAO;
+    public AuthorizeService(){
+        this.loggerService = new LoggerService(AuthorizeService.class);
     }
 
-    private boolean hasRole(String roleName, List<User> roles)
-    {
-        if (roles != null)
-        {
-            for(User role : roles)
-            {
-                if(roleName.equals(role.getRole()))
-                {
+    private boolean hasRole(String roleName, Account account){
+        if (account != null){
+            for(String role : account.getRoles()){
+                if(roleName.equals(role)){
 
                     return true;
                 }
             }
         }
+        loggerService.getWebLogger().warn(loggerService.getNO_AUTHORITY());
 
         return false;
     }
 
     @Override
-    public boolean authorize(User user, String roleName) {
+    public boolean authorize(Account account, String roleName) {
 
-        return hasRole(roleName, userDAO.checkUserRole(user));
+        return hasRole(roleName, account);
     }
 
 }
