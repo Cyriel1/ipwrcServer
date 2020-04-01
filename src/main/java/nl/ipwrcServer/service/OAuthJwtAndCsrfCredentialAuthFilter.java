@@ -25,9 +25,12 @@ public class OAuthJwtAndCsrfCredentialAuthFilter<P extends Principal> extends Au
         String jwtToken = getCredentials(requestContext.getHeaders().getFirst(HttpHeaders.AUTHORIZATION));
         String csrfToken = getCredentials(requestContext.getHeaders().getFirst("X-Csrf-Protection"));
 
-        if (!authenticate(requestContext, new Token(jwtToken, csrfToken) , SecurityContext.BASIC_AUTH)) {
-            loggerService.getWebLogger().warn("USER NEEDS CREDENTIALS TO ACCESS THE RESOURCE");
-            throw new WebApplicationException(unauthorizedHandler.buildResponse(prefix, realm));
+        try {
+            if (!authenticate(requestContext, new Token(jwtToken, csrfToken) , SecurityContext.BASIC_AUTH)) {
+                loggerService.getWebLogger().warn("USER NEEDS CREDENTIALS TO ACCESS THE RESOURCE");
+            }
+        }catch(WebApplicationException webApplicationException){
+            unauthorizedHandler.buildResponse(prefix, realm);
         }
     }
 

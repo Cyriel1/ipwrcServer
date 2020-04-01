@@ -35,7 +35,7 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
             JWTVerifier verifier = JWT.require(algorithm)
                     .withIssuer(webshopConfiguration.getJwt().getAuthor())
                     .acceptExpiresAt(5L)
-                    .withClaim("CsrfToken", credentials.getCsrfToken())
+                    .withClaim("csrf", credentials.getCsrfToken())
                     .build();
             DecodedJWT decodedJWT = verifier.verify(credentials.getJwtToken());
 

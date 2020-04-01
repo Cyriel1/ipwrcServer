@@ -76,7 +76,7 @@ public class TokenService {
                     .withSubject(userAccount.getUsername())
                     .withIssuedAt(new Date(tokenIssuedAt))
                     .withExpiresAt(new Date(tokenExpiresAt))
-                    .withClaim("CsrfToken", createCsrfToken())
+                    .withClaim("csrf", createCsrfToken())
                     .withArrayClaim("role", tokenRoles.toArray(new String[0]))
                     .sign(algorithm);
 
@@ -90,11 +90,11 @@ public class TokenService {
 
     public String createCsrfToken(){
         SecureRandom secureRandom = new SecureRandom();
-        byte[] randomFingerPrint = new byte[50];
-        secureRandom.nextBytes(randomFingerPrint);
-        String userFingerprint = DatatypeConverter.printHexBinary(randomFingerPrint);
+        byte[] randomToken = new byte[50];
+        secureRandom.nextBytes(randomToken);
+        String userCsrfToken = DatatypeConverter.printHexBinary(randomToken);
 
-        return userFingerprint;
+        return userCsrfToken;
     }
 
     public Calendar amountOfHours(int hour){
