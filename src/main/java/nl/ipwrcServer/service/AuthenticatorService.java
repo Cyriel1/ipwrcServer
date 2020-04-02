@@ -10,6 +10,7 @@ import nl.ipwrcServer.configuration.WebshopConfiguration;
 import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.model.Token;
 import nl.ipwrcServer.persistence.AccountDAO;
+import java.security.interfaces.RSAPublicKey;
 import java.util.*;
 
 public class AuthenticatorService implements Authenticator<Token, Account> {
@@ -17,27 +18,47 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
     private AccountDAO accountDAO;
     private WebshopConfiguration webshopConfiguration;
     private LoggerService loggerService;
+    private KeyReaderService keyReaderService;
 
     public AuthenticatorService(AccountDAO accountDAO, WebshopConfiguration webshopConfiguration){
         this.loggerService = new LoggerService(AuthenticatorService.class);
+        this.keyReaderService = new KeyReaderService();
         this.accountDAO = accountDAO;
         this.webshopConfiguration = webshopConfiguration;
     }
 
     @Override
     public Optional<Account> authenticate(Token credentials) {
-        return verifyToken(credentials);
+
+        return verifyAccesToken(verifyEncrypting(credentials));
     }
 
-    public Optional<Account> verifyToken(Token credentials){
+    public DecodedJWT verifyEncrypting(Token credentials){
+        RSAPublicKey publicKey = (RSAPublicKey) keyReaderService.getPublicKey("src/main/resources/keys/public_key.der");
+        try {
+            Algorithm algorithm = Algorithm.RSA256(publicKey, null);
+            JWTVerifier verifier = JWT.require(algorithm)
+                    .withClaim("csrf", credentials.getCsrfToken())
+                    .acceptExpiresAt(5L)
+                    .build();
+            DecodedJWT decodedJWT = verifier.verify(credentials.getEncryptedToken());
+
+            return decodedJWT;
+        } catch (JWTVerificationException exception){
+            loggerService.getWebLogger().warn("FAILED VERIFYING ENCRYPTED TOKEN");
+
+            return null;
+        }
+    }
+
+    public Optional<Account> verifyAccesToken(DecodedJWT credentials){
         try {
             Algorithm algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
             JWTVerifier verifier = JWT.require(algorithm)
                     .withIssuer(webshopConfiguration.getJwt().getAuthor())
                     .acceptExpiresAt(5L)
-                    .withClaim("csrf", credentials.getCsrfToken())
                     .build();
-            DecodedJWT decodedJWT = verifier.verify(credentials.getJwtToken());
+            DecodedJWT decodedJWT = verifier.verify(credentials.getClaim("acces_token").asString());
 
             return checkIfUsernameInTokenIsValid(decodedJWT);
         } catch (JWTVerificationException jwtVerificationException){

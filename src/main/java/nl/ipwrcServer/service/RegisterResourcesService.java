@@ -62,7 +62,7 @@ public class RegisterResourcesService {
         final String PREFIX = "Bearer";
         final String REALM = "Webshop ArcadeAccount";
         environment.jersey().register(new AuthDynamicFeature(
-                new OAuthJwtAndCsrfCredentialAuthFilter.Builder<Account>()
+                new OAuthCredentialsAuthFilter.Builder<Account>()
                         .setAuthenticator(authenticatorService)
                         .setAuthorizer(new AuthorizeService())
                         .setPrefix(PREFIX)

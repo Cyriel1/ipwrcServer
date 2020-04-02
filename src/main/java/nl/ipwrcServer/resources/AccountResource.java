@@ -9,8 +9,6 @@ import nl.ipwrcServer.service.RegisterAccountService;
 import nl.ipwrcServer.service.TokenService;
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -41,7 +39,7 @@ public class AccountResource {
     @Path("/getCredentials")
     @Consumes({MediaType.APPLICATION_JSON})
     @JsonView(JsonViewService.Public.class)
-    public String getToken(Account loginCredentials){
+    public String[] getToken(Account loginCredentials){
 
         return tokenService.receiveTokenAfterValidation(loginCredentials);
     }

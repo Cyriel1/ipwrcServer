@@ -4,16 +4,16 @@ import java.util.Objects;
 
 public class Token {
 
-    private final String jwtToken;
+    private final String encryptedToken;
     private final String csrfToken;
 
-    public Token(String jwtToken, String csrfToken){
-        this.jwtToken = Objects.requireNonNull(jwtToken);
+    public Token(String encryptedToken, String csrfToken){
+        this.encryptedToken = Objects.requireNonNull(encryptedToken);
         this.csrfToken = Objects.requireNonNull(csrfToken);
     }
 
-    public String getJwtToken() {
-        return jwtToken;
+    public String getEncryptedToken() {
+        return encryptedToken;
     }
 
     public String getCsrfToken() {

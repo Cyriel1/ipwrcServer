@@ -12,21 +12,21 @@ import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
 
 @Priority(Priorities.AUTHENTICATION)
-public class OAuthJwtAndCsrfCredentialAuthFilter<P extends Principal> extends AuthFilter<Token, P> {
+public class OAuthCredentialsAuthFilter<P extends Principal> extends AuthFilter<Token, P> {
 
     private LoggerService loggerService;
 
-    private OAuthJwtAndCsrfCredentialAuthFilter() {
-        this.loggerService = new LoggerService(OAuthJwtAndCsrfCredentialAuthFilter.class);
+    private OAuthCredentialsAuthFilter() {
+        this.loggerService = new LoggerService(OAuthCredentialsAuthFilter.class);
     }
 
     @Override
     public void filter(final ContainerRequestContext requestContext) {
-        String jwtToken = getCredentials(requestContext.getHeaders().getFirst(HttpHeaders.AUTHORIZATION));
-        String csrfToken = getCredentials(requestContext.getHeaders().getFirst("X-Csrf-Protection"));
+        String encryptedToken = getCredentials(requestContext.getHeaders().getFirst(HttpHeaders.AUTHORIZATION));
 
         try {
-            if (!authenticate(requestContext, new Token(jwtToken, csrfToken) , SecurityContext.BASIC_AUTH)) {
+            String csrfToken = getCredentials(requestContext.getHeaders().getFirst("X-Csrf-Protection"));
+            if (!authenticate(requestContext, new Token(encryptedToken, csrfToken) , SecurityContext.BASIC_AUTH)) {
                 loggerService.getWebLogger().warn("USER NEEDS CREDENTIALS TO ACCESS THE RESOURCE");
             }
         }catch(WebApplicationException webApplicationException){
@@ -48,12 +48,11 @@ public class OAuthJwtAndCsrfCredentialAuthFilter<P extends Principal> extends Au
         return header.substring(space + 1);
     }
 
-    public static class Builder<P extends Principal>
-            extends AuthFilterBuilder<Token, P, OAuthJwtAndCsrfCredentialAuthFilter<P>> {
+    public static class Builder<P extends Principal> extends AuthFilterBuilder<Token, P, OAuthCredentialsAuthFilter<P>> {
 
         @Override
-        protected OAuthJwtAndCsrfCredentialAuthFilter<P> newInstance() {
-            return new OAuthJwtAndCsrfCredentialAuthFilter<>();
+        protected OAuthCredentialsAuthFilter<P> newInstance() {
+            return new OAuthCredentialsAuthFilter<>();
         }
     }
 }

@@ -26,7 +26,7 @@ public class KeyReaderService {
         }catch (IOException keyBytes){
             loggerService.getWebLogger().warn("UNABLE TO READ KEY FILE");
 
-            return null;
+            return new byte[0];
         }
     }
 
@@ -49,7 +49,6 @@ public class KeyReaderService {
             return keyfactory.generatePrivate(spec);
         }catch (InvalidKeySpecException invalidKey){
             loggerService.getWebLogger().warn("UNABLE TO RETRIEVE PRIVATE KEY");
-
 
             return null;
         }
