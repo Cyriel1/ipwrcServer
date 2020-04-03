@@ -68,11 +68,12 @@ public class RegisterResourcesService {
                         .setPrefix(PREFIX)
                         .setRealm(REALM)
                         .buildAuthFilter()));
-        environment.jersey().register(RolesAllowedDynamicFeature.class);
+        environment.jersey().register(new RolesAllowedDynamicFeature());
+        environment.jersey().register(new InterceptorService(authenticatorService));
     }
 
     public void registerCorsFilter(){
-        final FilterRegistration.Dynamic filter = environment.servlets().addFilter("CrossOriginFilter", CrossOriginFilter.class);
+        final FilterRegistration.Dynamic filter = environment.servlets().addFilter("CrossOriginFilter", new CrossOriginFilter());
 
         filter.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, webshopConfiguration.getCors().getAllowedOrigins());
         filter.setInitParameter(CrossOriginFilter.ALLOWED_HEADERS_PARAM, webshopConfiguration.getCors().getAllowedHeaders());

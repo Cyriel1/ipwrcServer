@@ -69,14 +69,29 @@ public class TokenService {
     }
 
     public String[] createEncryptedToken(Account userAccount){
+
+        return createEncryptedToken(userAccount, null);
+    }
+
+    public String newOrExistingRefreshToken(String refreshToken){
+        if(refreshToken != null){
+
+            return refreshToken;
+        }
+
+        return createRefreshToken();
+    }
+
+    public String[] createEncryptedToken(Account userAccount, String refreshToken){
         RSAPrivateKey privateKey = (RSAPrivateKey) keyReaderService.getPrivateKey("src/main/resources/keys/private_key.der");
         String csrfToken = createCsrfToken();
         try {
             Algorithm algorithm = Algorithm.RSA256(null, privateKey);
             String token = JWT.create()
                     .withKeyId("arcade_1")
-                    .withClaim("acces_token", createAccesToken(userAccount))
-                    .withClaim("csrf", csrfToken)
+                    .withClaim("access_token", createAccessToken(userAccount))
+                    .withClaim("refresh_token", newOrExistingRefreshToken(refreshToken))
+                    .withClaim("csrf_token", csrfToken)
                     .sign(algorithm);
 
             return new String[]{token, csrfToken};
@@ -87,18 +102,32 @@ public class TokenService {
         }
     }
 
-    public String createAccesToken(Account userAccount) {
-        long tokenIssuedAt = System.currentTimeMillis();
-        long tokenExpiresAt = amountOfHours(8).getTimeInMillis();
-        ArrayList<String> tokenRoles = getRolesFromDao(userAccount);
+    public String createAccessToken(Account userAccount) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
             String token = JWT.create()
                     .withIssuer(webshopConfiguration.getJwt().getAuthor())
                     .withSubject(userAccount.getUsername())
-                    .withIssuedAt(new Date(tokenIssuedAt))
-                    .withExpiresAt(new Date(tokenExpiresAt))
-                    .withArrayClaim("role", tokenRoles.toArray(new String[0]))
+                    .withIssuedAt(new Date(System.currentTimeMillis()))
+                    .withExpiresAt(new Date(amountOfMinutes(1).getTimeInMillis()))
+                    .withArrayClaim("role", getRolesFromDao(userAccount).toArray(new String[0]))
+                    .sign(algorithm);
+
+            return token;
+        } catch (JWTCreationException createJwtException) {
+            loggerService.getWebLogger().warn(loggerService.getFAILED_TOKEN_CREATION());
+
+            return "";
+        }
+    }
+
+    public String createRefreshToken(){
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
+            String token = JWT.create()
+                    .withIssuer(webshopConfiguration.getJwt().getAuthor())
+                    .withIssuedAt(new Date(System.currentTimeMillis()))
+                    .withExpiresAt(new Date(amountOfHours(8).getTimeInMillis()))
                     .sign(algorithm);
 
             return token;
@@ -119,9 +148,16 @@ public class TokenService {
     }
 
     public Calendar amountOfHours(int hour){
-        Calendar hourTime = Calendar.getInstance();
-        hourTime.add(Calendar.HOUR, hour);
+        Calendar addHours = Calendar.getInstance();
+        addHours.add(Calendar.HOUR, hour);
 
-        return hourTime;
+        return addHours;
+    }
+
+    public Calendar amountOfMinutes(int minutes){
+        Calendar addMinutes = Calendar.getInstance();
+        addMinutes.add(Calendar.MINUTE, minutes);
+
+        return addMinutes;
     }
 }

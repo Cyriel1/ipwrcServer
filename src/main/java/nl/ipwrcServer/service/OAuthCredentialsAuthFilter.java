@@ -23,7 +23,6 @@ public class OAuthCredentialsAuthFilter<P extends Principal> extends AuthFilter<
     @Override
     public void filter(final ContainerRequestContext requestContext) {
         String encryptedToken = getCredentials(requestContext.getHeaders().getFirst(HttpHeaders.AUTHORIZATION));
-
         try {
             String csrfToken = getCredentials(requestContext.getHeaders().getFirst("X-Csrf-Protection"));
             if (!authenticate(requestContext, new Token(encryptedToken, csrfToken) , SecurityContext.BASIC_AUTH)) {
