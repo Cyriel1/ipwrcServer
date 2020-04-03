@@ -7,10 +7,7 @@ import nl.ipwrcServer.persistence.AccountDAO;
 import nl.ipwrcServer.service.JsonViewService;
 import nl.ipwrcServer.service.RegisterAccountService;
 import nl.ipwrcServer.service.TokenService;
-import org.jdbi.v3.sqlobject.customizer.Bind;
-
 import javax.annotation.security.RolesAllowed;
-import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;

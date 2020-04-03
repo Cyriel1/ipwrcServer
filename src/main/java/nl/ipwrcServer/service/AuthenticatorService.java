@@ -21,7 +21,7 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
     private LoggerService loggerService;
     private KeyReaderService keyReaderService;
     private TokenService tokenService;
-    private String[] newEcryptedToken;
+    private String[] authBundleAndCsrfToken;
 
     public AuthenticatorService(AccountDAO accountDAO, WebshopConfiguration webshopConfiguration){
         this.loggerService = new LoggerService(AuthenticatorService.class);
@@ -34,93 +34,90 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
     @Override
     public Optional<Account> authenticate(Token credentials) {
 
-        return verifyAccessToken(verifyEncrypting(credentials));
+        return verifyAccessToken(verifyBundleToken(credentials));
     }
 
-    public DecodedJWT verifyEncrypting(Token credentials){
+    private DecodedJWT verifyBundleToken(Token credentials){
         RSAPublicKey publicKey = (RSAPublicKey) keyReaderService.getPublicKey("src/main/resources/keys/public_key.der");
         try {
-            Algorithm algorithm = Algorithm.RSA256(publicKey, null);
-            JWTVerifier verifier = JWT.require(algorithm)
+            Algorithm rsa256Algorithm = Algorithm.RSA256(publicKey, null);
+            JWTVerifier verifiesBundleToken = JWT.require(rsa256Algorithm)
                     .withClaim("csrf_token", credentials.getCsrfToken())
                     .build();
-            DecodedJWT decodedJWT = verifier.verify(credentials.getEncryptedToken());
 
-            return decodedJWT;
-        } catch (JWTVerificationException exception){
-            loggerService.getWebLogger().warn("FAILED VERIFYING ENCRYPTED TOKEN");
+            return verifiesBundleToken.verify(credentials.getTokenBundle());
+        } catch (JWTVerificationException verifyBundleTokenException){
+            loggerService.getWebLogger().warn("Failed to verify bundle token");
 
             return null;
         }
     }
 
-    public Optional<Account> verifyAccessToken(DecodedJWT credentials){
+    private Optional<Account> verifyAccessToken(DecodedJWT credentials){
         try {
-            Algorithm algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
-            JWTVerifier verifier = JWT.require(algorithm)
+            Algorithm hmac256Algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
+            JWTVerifier verifiesAccessToken = JWT.require(hmac256Algorithm)
                     .withIssuer(webshopConfiguration.getJwt().getAuthor())
                     .acceptExpiresAt(5L)
                     .build();
-            DecodedJWT decodedJWT = verifier.verify(credentials.getClaim("access_token").asString());
+            DecodedJWT verifiedAccessToken = verifiesAccessToken.verify(credentials.getClaim("access_token").asString());
 
-            return checkIfUsernameInTokenIsValid(decodedJWT);
-        } catch (JWTVerificationException jwtVerificationException){
+            return checkIfUsernameInTokenIsValid(verifiedAccessToken);
+        } catch (JWTVerificationException verifyAccessTokenException){
             loggerService.getWebLogger().warn(loggerService.getINVALID_TOKEN_SIGNATURE());
-            String token = credentials.getClaim("access_token").asString();
-            try {
-                DecodedJWT jwt = JWT.decode(token);
 
-                return verifyRefreshToken(credentials, jwt);
-            } catch (JWTDecodeException exception){
-                loggerService.getWebLogger().warn("WAAR BEN IK IN VREDESNAAM");
-                //Invalid token
-            }
+            return decodeAccessToken(credentials);
+        }
+    }
+
+    private Optional<Account> decodeAccessToken(DecodedJWT credentials){
+        try {
+            DecodedJWT accessToken = JWT.decode(credentials.getClaim("access_token").asString());
+
+            return verifyRefreshToken(credentials, accessToken);
+        } catch (JWTDecodeException decodeAccessTokenException){
+            loggerService.getWebLogger().warn("Could not decode access token");
 
             return Optional.empty();
         }
     }
 
-    public Optional<Account> verifyRefreshToken(DecodedJWT credentials, DecodedJWT accessToken){
+    private Optional<Account> verifyRefreshToken(DecodedJWT credentials, DecodedJWT accessToken){
         try{
-            Algorithm algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
-            JWTVerifier verifier = JWT.require(algorithm)
+            Algorithm hmac256Algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
+            JWTVerifier verifiesRefreshToken = JWT.require(hmac256Algorithm)
                     .withIssuer(webshopConfiguration.getJwt().getAuthor())
                     .acceptExpiresAt(5L)
                     .build();
-            DecodedJWT decodedJWT = verifier.verify(credentials.getClaim("refresh_token").asString());
+            DecodedJWT verifiedRefreshToken = verifiesRefreshToken.verify(credentials.getClaim("refresh_token").asString());
+            Account userAccount = new Account(accessToken.getSubject(), accessToken.getClaim("role").asArray(String.class));
+            authBundleAndCsrfToken = tokenService.createEncryptedToken(userAccount, verifiedRefreshToken.getToken());
 
-            newEcryptedToken = tokenService.createEncryptedToken(new Account(accessToken.getSubject(), accessToken.getClaim("role").asArray(String.class)), credentials.getClaim("refresh_token").asString());
-
-            return Optional.of(new Account(accessToken.getSubject(), accessToken.getClaim("role").asArray(String.class)));
-        }catch (JWTVerificationException jwtVerificationException){
-            loggerService.getWebLogger().warn("REFRESH TOKEN IS INVALID");
+            return Optional.of(userAccount);
+        }catch (JWTVerificationException verifyRefreshTokenException){
+            loggerService.getWebLogger().warn("Failed to verify refresh token");
 
             return Optional.empty();
         }
     }
 
-    public String[] getEcryptedToken(){
-
-        return newEcryptedToken;
-    }
-
-    public void setEncryptedToken(String[] newEcryptedToken){
-        this.newEcryptedToken = newEcryptedToken;
-    }
-
-    public Optional<Account> checkIfUsernameInTokenIsValid(DecodedJWT decodedJWT){
+    private Optional<Account> checkIfUsernameInTokenIsValid(DecodedJWT verifiedAccessToken){
         try{
-            if(accountDAO.checkIfUsernameExist(decodedJWT.getSubject()).equals(decodedJWT.getSubject())){
+            if(accountDAO.checkIfUsernameExist(verifiedAccessToken.getSubject()).equals(verifiedAccessToken.getSubject())){
 
-                return Optional.of(new Account(decodedJWT.getSubject(), decodedJWT.getClaim("role").asArray(String.class)));
+                return Optional.of(new Account(verifiedAccessToken.getSubject(), verifiedAccessToken.getClaim("role").asArray(String.class)));
             }
 
             return Optional.empty();
-        }catch (NullPointerException exception){
+        }catch (NullPointerException noExistentUsernameException){
             loggerService.getWebLogger().warn(loggerService.getINVALID_USERNAME_IN_TOKEN());
 
             return Optional.empty();
         }
     }
 
+    public String[] getAuthBundleAndCsrfToken(){
+
+        return authBundleAndCsrfToken;
+    }
 }

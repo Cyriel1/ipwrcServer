@@ -43,7 +43,7 @@ public class RegisterResourcesService {
         registerCorsFilter();
     }
 
-    public void initializeVariables(){
+    private void initializeVariables(){
         accountDAO = jdbi.onDemand(AccountDAO.class);
         userDAO = jdbi.onDemand(UserDAO.class);
         productDAO = jdbi.onDemand(ProductDAO.class);
@@ -52,27 +52,25 @@ public class RegisterResourcesService {
         registerAccountService = new RegisterAccountService(accountDAO);
     }
 
-    public void registerResources(){
+    private void registerResources(){
         environment.jersey().register(new AccountResource(accountDAO, tokenService, registerAccountService));
         environment.jersey().register(new UserResource(userDAO));
         environment.jersey().register(new ProductResource(productDAO));
     }
 
-    public void registerAuthentication(){
-        final String PREFIX = "Bearer";
-        final String REALM = "Webshop ArcadeAccount";
+    private void registerAuthentication(){
         environment.jersey().register(new AuthDynamicFeature(
                 new OAuthCredentialsAuthFilter.Builder<Account>()
                         .setAuthenticator(authenticatorService)
                         .setAuthorizer(new AuthorizeService())
-                        .setPrefix(PREFIX)
-                        .setRealm(REALM)
+                        .setPrefix("Bearer")
+                        .setRealm("Webshop ArcadeAccount")
                         .buildAuthFilter()));
         environment.jersey().register(new RolesAllowedDynamicFeature());
         environment.jersey().register(new InterceptorService(authenticatorService));
     }
 
-    public void registerCorsFilter(){
+    private void registerCorsFilter(){
         final FilterRegistration.Dynamic filter = environment.servlets().addFilter("CrossOriginFilter", new CrossOriginFilter());
 
         filter.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, webshopConfiguration.getCors().getAllowedOrigins());

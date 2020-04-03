@@ -15,15 +15,14 @@ public class RegisterAccountService {
         this.accountDAO = accountDAO;
     }
 
-    public String hashPassword(String password, int logRounds){
+    private String hashPassword(String password){
 
-        return  BCrypt.hashpw(password, BCrypt.gensalt(logRounds));
+        return  BCrypt.hashpw(password, BCrypt.gensalt(14));
     }
 
     public void registerAccount(Account registerCredentials){
-        final int BCRYPT_LOG_ROUNDS = 14;
         if(validateIfUsernameIsUnique(registerCredentials)){
-            String hashedPassword = hashPassword(registerCredentials.getPassword(), BCRYPT_LOG_ROUNDS);
+            String hashedPassword = hashPassword(registerCredentials.getPassword());
             registerCredentials.setPassword(hashedPassword);
             accountDAO.giveAccountCustomerRole(accountDAO.registerAccount(registerCredentials));
 
@@ -32,7 +31,7 @@ public class RegisterAccountService {
         loggerService.getWebLogger().warn(loggerService.getUSERNAME_EXIST());
     }
 
-    public boolean validateIfUsernameIsUnique(Account registerCredentials){
+    private boolean validateIfUsernameIsUnique(Account registerCredentials){
         List<Account> allAccounts = accountDAO.getAllUsernames();
         if(allAccounts != null){
             for(Account account : allAccounts){

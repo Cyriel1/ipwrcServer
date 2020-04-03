@@ -29,20 +29,9 @@ public class TokenService {
         this.webshopConfiguration = webshopConfiguration;
     }
 
-    public boolean verifyHash(String password, String hashed){
-        try{
-
-            return BCrypt.checkpw(password, hashed);
-        }catch (IllegalArgumentException exception){
-            loggerService.getWebLogger().warn(loggerService.getINVALID_SALT_VERSION());
-
-            return false;
-        }
-    }
-
     public String[] receiveTokenAfterValidation(Account loginCredentials){
-        Account userAccount = accountDAO.findByUsername(loginCredentials);
         try {
+            Account userAccount = accountDAO.findByUsername(loginCredentials);
             if(verifyHash(loginCredentials.getPassword(), userAccount.getPassword())){
 
                 return createEncryptedToken(userAccount);
@@ -56,36 +45,21 @@ public class TokenService {
         }
     }
 
-    public ArrayList<String> getRolesFromDao(Account account){
-        List<Account> accountRolesDao = accountDAO.getAccountRoles(account);
-        ArrayList<String> accountRoles = new ArrayList<>();
+    private boolean verifyHash(String password, String hashedPassword){
+        try{
 
-        for(Account accountRoleDao : accountRolesDao){
+            return BCrypt.checkpw(password, hashedPassword);
+        }catch (IllegalArgumentException exception){
+            loggerService.getWebLogger().warn(loggerService.getINVALID_SALT_VERSION());
 
-            accountRoles.add(accountRoleDao.getRole());
+            return false;
         }
-
-        return accountRoles;
-    }
-
-    public String[] createEncryptedToken(Account userAccount){
-
-        return createEncryptedToken(userAccount, null);
-    }
-
-    public String newOrExistingRefreshToken(String refreshToken){
-        if(refreshToken != null){
-
-            return refreshToken;
-        }
-
-        return createRefreshToken();
     }
 
     public String[] createEncryptedToken(Account userAccount, String refreshToken){
-        RSAPrivateKey privateKey = (RSAPrivateKey) keyReaderService.getPrivateKey("src/main/resources/keys/private_key.der");
-        String csrfToken = createCsrfToken();
         try {
+            RSAPrivateKey privateKey = (RSAPrivateKey) keyReaderService.getPrivateKey("src/main/resources/keys/private_key.der");
+            String csrfToken = createCsrfToken();
             Algorithm algorithm = Algorithm.RSA256(null, privateKey);
             String token = JWT.create()
                     .withKeyId("arcade_1")
@@ -102,18 +76,31 @@ public class TokenService {
         }
     }
 
-    public String createAccessToken(Account userAccount) {
+    private String[] createEncryptedToken(Account userAccount){
+
+        return createEncryptedToken(userAccount, null);
+    }
+
+    private String newOrExistingRefreshToken(String refreshToken){
+        if(refreshToken != null){
+
+            return refreshToken;
+        }
+
+        return createRefreshToken();
+    }
+
+    private String createAccessToken(Account userAccount) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
-            String token = JWT.create()
+            Algorithm hmac256Algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
+
+            return JWT.create()
                     .withIssuer(webshopConfiguration.getJwt().getAuthor())
                     .withSubject(userAccount.getUsername())
                     .withIssuedAt(new Date(System.currentTimeMillis()))
                     .withExpiresAt(new Date(amountOfMinutes(1).getTimeInMillis()))
                     .withArrayClaim("role", getRolesFromDao(userAccount).toArray(new String[0]))
-                    .sign(algorithm);
-
-            return token;
+                    .sign(hmac256Algorithm);
         } catch (JWTCreationException createJwtException) {
             loggerService.getWebLogger().warn(loggerService.getFAILED_TOKEN_CREATION());
 
@@ -121,16 +108,27 @@ public class TokenService {
         }
     }
 
-    public String createRefreshToken(){
+    private ArrayList<String> getRolesFromDao(Account account){
+        List<Account> accountRolesDao = accountDAO.getAccountRoles(account);
+        ArrayList<String> accountRoles = new ArrayList<>();
+
+        for(Account accountRoleDao : accountRolesDao){
+
+            accountRoles.add(accountRoleDao.getRole());
+        }
+
+        return accountRoles;
+    }
+
+    private String createRefreshToken(){
         try {
-            Algorithm algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
-            String token = JWT.create()
+            Algorithm hmac256Algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
+
+            return JWT.create()
                     .withIssuer(webshopConfiguration.getJwt().getAuthor())
                     .withIssuedAt(new Date(System.currentTimeMillis()))
                     .withExpiresAt(new Date(amountOfHours(8).getTimeInMillis()))
-                    .sign(algorithm);
-
-            return token;
+                    .sign(hmac256Algorithm);
         } catch (JWTCreationException createJwtException) {
             loggerService.getWebLogger().warn(loggerService.getFAILED_TOKEN_CREATION());
 
@@ -138,23 +136,22 @@ public class TokenService {
         }
     }
 
-    public String createCsrfToken(){
+    private String createCsrfToken(){
         SecureRandom secureRandom = new SecureRandom();
         byte[] randomToken = new byte[50];
         secureRandom.nextBytes(randomToken);
-        String userCsrfToken = DatatypeConverter.printHexBinary(randomToken);
 
-        return userCsrfToken;
+        return DatatypeConverter.printHexBinary(randomToken);
     }
 
-    public Calendar amountOfHours(int hour){
+    private Calendar amountOfHours(int hour){
         Calendar addHours = Calendar.getInstance();
         addHours.add(Calendar.HOUR, hour);
 
         return addHours;
     }
 
-    public Calendar amountOfMinutes(int minutes){
+    private Calendar amountOfMinutes(int minutes){
         Calendar addMinutes = Calendar.getInstance();
         addMinutes.add(Calendar.MINUTE, minutes);
 

@@ -19,23 +19,23 @@ public class KeyReaderService {
         this.loggerService = new LoggerService(KeyReaderService.class);
     }
 
-    public byte[] readKeyBytes(String filename){
+    private byte[] readKeyBytes(String filename){
         try{
 
             return Files.readAllBytes(Paths.get(filename));
         }catch (IOException keyBytes){
-            loggerService.getWebLogger().warn("UNABLE TO READ KEY FILE");
+            loggerService.getWebLogger().warn("Unable to read key file");
 
             return new byte[0];
         }
     }
 
-    public KeyFactory getRSAKeyInstance(){
+    private KeyFactory getRSAKeyInstance(){
         try {
 
             return KeyFactory.getInstance("RSA");
         }catch(NoSuchAlgorithmException rsaKeyInstance){
-            loggerService.getWebLogger().warn("UNABLE TO RETRIEVE KEY INSTANCE");
+            loggerService.getWebLogger().warn("Unable to retrieve key instance");
 
             return null;
         }
@@ -48,7 +48,7 @@ public class KeyReaderService {
 
             return keyfactory.generatePrivate(spec);
         }catch (InvalidKeySpecException invalidKey){
-            loggerService.getWebLogger().warn("UNABLE TO RETRIEVE PRIVATE KEY");
+            loggerService.getWebLogger().warn("Unable to retrieve private key");
 
             return null;
         }
@@ -61,7 +61,7 @@ public class KeyReaderService {
 
             return keyFactory.generatePublic(spec);
         }catch (InvalidKeySpecException invalidKey){
-            loggerService.getWebLogger().warn("UNABLE TO RETRIEVE PUBLIC KEY");
+            loggerService.getWebLogger().warn("Unable to retrieve public key");
 
             return null;
         }

@@ -6,7 +6,6 @@ import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.model.Product;
 import nl.ipwrcServer.persistence.ProductDAO;
 import nl.ipwrcServer.service.JsonViewService;
-
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

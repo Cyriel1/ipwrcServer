@@ -8,36 +8,53 @@ import javax.ws.rs.ext.WriterInterceptorContext;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.Arrays;
 
 @Priority(Priorities.AUTHENTICATION)
 public class InterceptorService implements WriterInterceptor {
 
     private AuthenticatorService authenticatorService;
+    private LoggerService loggerService;
 
     public InterceptorService(AuthenticatorService authenticatorService){
+        this.loggerService = new LoggerService(InterceptorService.class);
         this.authenticatorService = authenticatorService;
     }
 
     @Override
-    public void aroundWriteTo(WriterInterceptorContext writerInterceptorContext) throws IOException, WebApplicationException {
-        String[] tokens = authenticatorService.getEcryptedToken();
-        OutputStream requestContent = writerInterceptorContext.getOutputStream();
-        ByteArrayOutputStream addTokenToContent = new ByteArrayOutputStream();
+    public void aroundWriteTo(WriterInterceptorContext writerInterceptorContext) {
+        try {
+            OutputStream requestContent = writerInterceptorContext.getOutputStream();
+            ByteArrayOutputStream addTokenToContent = new ByteArrayOutputStream();
+            placeBundleAndCsrfTokenInOutput(writerInterceptorContext, addTokenToContent);
+            writeNewOutputToRequest(writerInterceptorContext, addTokenToContent, requestContent);
+        }catch (WebApplicationException webApplicationException){
+            loggerService.getWebLogger().warn("Failed to output request");
+        }
+    }
 
-        addTokenToContent.write("[{\"tokens\":{\"refresh_token\":\"".getBytes());
-        addTokenToContent.write(tokens[0].getBytes());
-        addTokenToContent.write("\", \"csrf_token\":\"".getBytes());
-        addTokenToContent.write(tokens[1].getBytes());
-        addTokenToContent.write( "\"}, \"request\":".getBytes());
+    private void placeBundleAndCsrfTokenInOutput(WriterInterceptorContext writerInterceptorContext, ByteArrayOutputStream addTokenToContent){
+        try {
+            String[] tokens = authenticatorService.getAuthBundleAndCsrfToken();
+            addTokenToContent.write("[{\"tokens\":{\"refresh_token\":\"".getBytes());
+            addTokenToContent.write(tokens[0].getBytes());
+            addTokenToContent.write("\", \"csrf_token\":\"".getBytes());
+            addTokenToContent.write(tokens[1].getBytes());
+            addTokenToContent.write( "\"}, \"request\":".getBytes());
+            writerInterceptorContext.setOutputStream(addTokenToContent);
+            writerInterceptorContext.proceed();
+            addTokenToContent.write("}]".getBytes());
+        } catch (IOException addTokenException) {
+            loggerService.getWebLogger().warn("Failed to add tokens");
+        }
+    }
 
-        writerInterceptorContext.setOutputStream(addTokenToContent);
-        writerInterceptorContext.proceed();
-
-        addTokenToContent.write("}]".getBytes());
-        byte[] entity = addTokenToContent.toByteArray();
-
-        requestContent.write(entity);
-        writerInterceptorContext.setOutputStream(requestContent);
+    private void writeNewOutputToRequest(WriterInterceptorContext writerInterceptorContext, ByteArrayOutputStream addTokenToContent, OutputStream requestContent){
+        try {
+            byte[] entity = addTokenToContent.toByteArray();
+            requestContent.write(entity);
+            writerInterceptorContext.setOutputStream(requestContent);
+        } catch (IOException writeOutputException) {
+            loggerService.getWebLogger().warn("Failed to write new output to request");
+        }
     }
 }
