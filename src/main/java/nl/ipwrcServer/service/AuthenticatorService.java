@@ -14,7 +14,6 @@ import nl.ipwrcServer.configuration.WebshopConfiguration;
 import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.model.Token;
 import nl.ipwrcServer.persistence.AccountDAO;
-
 import javax.xml.bind.DatatypeConverter;
 import java.security.GeneralSecurityException;
 import java.security.interfaces.RSAPublicKey;
@@ -27,23 +26,30 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
     private LoggerService loggerService;
     private KeyReaderService keyReaderService;
     private TokenService tokenService;
+    private BlackListService blackListService;
     private static String[] authBundleAndCsrfToken;
 
-    public AuthenticatorService(AccountDAO accountDAO, WebshopConfiguration webshopConfiguration){
+    public AuthenticatorService(AccountDAO accountDAO, WebshopConfiguration webshopConfiguration, BlackListService blackListService){
         this.loggerService = new LoggerService(AuthenticatorService.class);
         this.keyReaderService = new KeyReaderService();
         this.tokenService = new TokenService(accountDAO, webshopConfiguration);
         this.accountDAO = accountDAO;
         this.webshopConfiguration = webshopConfiguration;
+        this.blackListService = blackListService;
     }
 
     @Override
     public Optional<Account> authenticate(Token credentials) {
+        if(blackListService.ifCredentialsInBlackList(credentials)){
+            loggerService.getWebLogger().warn("Credentials are in blacklist");
+
+            return Optional.empty();
+        }
 
         return verifyAccessToken(decipherToken(credentials, keyReaderService.getAedKey()));
     }
 
-    public Optional<DecodedJWT> decipherToken(Token credentials, KeysetHandle keysetHandle){
+    private Optional<DecodedJWT> decipherToken(Token credentials, KeysetHandle keysetHandle){
         try{
             byte[] cipheredToken = DatatypeConverter.parseHexBinary(credentials.getTokenBundle());
             Aead aead = AeadFactory.getPrimitive(keysetHandle);
@@ -52,6 +58,7 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
             return verifyBundleToken(new Token(new String(decipheredToken), credentials.getCsrfToken()));
         }catch (GeneralSecurityException decipherException){
             loggerService.getWebLogger().warn("Failed to decipher bundle token");
+            blackListService.putInBlackListCache(credentials);
 
             return Optional.empty();
         }
@@ -68,6 +75,7 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
             return Optional.of(verifiesBundleToken.verify(credentials.getTokenBundle()));
         } catch (JWTVerificationException verifyBundleTokenException){
             loggerService.getWebLogger().warn("Failed to verify bundle token");
+            blackListService.putInBlackListCache(credentials);
 
             return Optional.empty();
         }
@@ -106,6 +114,7 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
 
             return Optional.empty();
         } catch (JWTDecodeException decodeAccessTokenException){
+            putNotVerifiedTokenInBlackList(credentials);
             loggerService.getWebLogger().warn("Could not decode access token");
 
             return Optional.empty();
@@ -130,6 +139,7 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
 
             return Optional.empty();
         }catch (JWTVerificationException verifyRefreshTokenException){
+            putNotVerifiedTokenInBlackList(credentials);
             loggerService.getWebLogger().warn("Failed to verify refresh token");
 
             return Optional.empty();
@@ -151,6 +161,10 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
 
             return Optional.empty();
         }
+    }
+
+    public void putNotVerifiedTokenInBlackList(Optional<DecodedJWT> credentials){
+        credentials.ifPresent(decodedJWT -> blackListService.putInBlackListCache(new Token(decodedJWT.getToken(), decodedJWT.getClaim("csrf_token").asString())));
     }
 
     public static String[] getAuthBundleAndCsrfToken(){

@@ -28,6 +28,7 @@ public class RegisterResourcesService {
     private TokenService tokenService;
     private RegisterAccountService registerAccountService;
     private LoggerService loggerService;
+    private BlackListService blackListService;
 
     private AccountDAO accountDAO;
     private UserDAO userDAO;
@@ -52,7 +53,8 @@ public class RegisterResourcesService {
         accountDAO = jdbi.onDemand(AccountDAO.class);
         userDAO = jdbi.onDemand(UserDAO.class);
         productDAO = jdbi.onDemand(ProductDAO.class);
-        authenticatorService = new AuthenticatorService(accountDAO, webshopConfiguration);
+        blackListService = new BlackListService();
+        authenticatorService = new AuthenticatorService(accountDAO, webshopConfiguration, blackListService);
         tokenService = new TokenService(accountDAO, webshopConfiguration);
         registerAccountService = new RegisterAccountService(accountDAO);
     }

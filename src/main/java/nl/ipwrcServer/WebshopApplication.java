@@ -9,6 +9,7 @@ import io.dropwizard.Application;
 import io.dropwizard.jdbi3.JdbiFactory;
 import io.dropwizard.setup.Environment;
 import nl.ipwrcServer.configuration.WebshopConfiguration;
+import nl.ipwrcServer.service.BlackListService;
 import nl.ipwrcServer.service.RegisterMappersService;
 import nl.ipwrcServer.service.RegisterResourcesService;
 import org.jdbi.v3.core.Jdbi;

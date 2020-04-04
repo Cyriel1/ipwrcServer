@@ -5,7 +5,6 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.google.crypto.tink.Aead;
 import com.google.crypto.tink.KeysetHandle;
-import com.google.crypto.tink.aead.AeadConfig;
 import com.google.crypto.tink.aead.AeadFactory;
 import nl.ipwrcServer.configuration.WebshopConfiguration;
 import nl.ipwrcServer.model.Account;
@@ -43,7 +42,7 @@ public class TokenService {
         } catch (GeneralSecurityException encryptException) {
             loggerService.getWebLogger().warn("Could not encrypt bundleToken");
 
-            return null;
+            return "";
         }
     }
 
@@ -113,10 +112,10 @@ public class TokenService {
         return createRefreshToken();
     }
 
-    private String newOrExistingAccessToken(String accesstoken, Account userAccount){
-        if(accesstoken != null){
+    private String newOrExistingAccessToken(String accessToken, Account userAccount){
+        if(accessToken != null){
 
-            return accesstoken;
+            return accessToken;
         }
 
         return createAccessToken(userAccount);
@@ -159,7 +158,7 @@ public class TokenService {
             return JWT.create()
                     .withIssuer(webshopConfiguration.getJwt().getAuthor())
                     .withIssuedAt(new Date(System.currentTimeMillis()))
-                    .withExpiresAt(new Date(amountOfHours(8).getTimeInMillis()))
+                    .withExpiresAt(new Date(amountOfHours(2).getTimeInMillis()))
                     .sign(hmac256Algorithm);
         } catch (JWTCreationException createJwtException) {
             loggerService.getWebLogger().warn(loggerService.getFAILED_TOKEN_CREATION());
