@@ -3,11 +3,16 @@ package nl.ipwrcServer.service;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
+import com.google.crypto.tink.Aead;
+import com.google.crypto.tink.KeysetHandle;
+import com.google.crypto.tink.aead.AeadConfig;
+import com.google.crypto.tink.aead.AeadFactory;
 import nl.ipwrcServer.configuration.WebshopConfiguration;
 import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.persistence.AccountDAO;
 import org.mindrot.jbcrypt.BCrypt;
 import javax.xml.bind.DatatypeConverter;
+import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
 import java.security.interfaces.RSAPrivateKey;
 import java.util.ArrayList;
@@ -23,10 +28,32 @@ public class TokenService {
     private KeyReaderService keyReaderService;
 
     public TokenService(AccountDAO accountDAO, WebshopConfiguration webshopConfiguration){
+        registerAed();
         this.loggerService = new LoggerService(TokenService.class);
         this.keyReaderService = new KeyReaderService();
         this.accountDAO = accountDAO;
         this.webshopConfiguration = webshopConfiguration;
+    }
+
+    public void registerAed(){
+        try {
+            AeadConfig.register();
+        } catch (GeneralSecurityException registerException) {
+            loggerService.getWebLogger().warn("Tinker Aed has not been registered");
+        }
+    }
+
+    public String cipherToken(String bundleToken, KeysetHandle keysetHandle){
+        try {
+            Aead aead = AeadFactory.getPrimitive(keysetHandle);
+            byte[] cipheredToken = aead.encrypt(bundleToken.getBytes(), null);
+
+            return DatatypeConverter.printHexBinary(cipheredToken);
+        } catch (GeneralSecurityException encryptException) {
+            loggerService.getWebLogger().warn("Could not encrypt bundleToken");
+
+            return null;
+        }
     }
 
     public String[] receiveTokenAfterValidation(Account loginCredentials){
@@ -34,11 +61,11 @@ public class TokenService {
             Account userAccount = accountDAO.findByUsername(loginCredentials);
             if(verifyHash(loginCredentials.getPassword(), userAccount.getPassword())){
 
-                return createEncryptedToken(userAccount);
+                return createBundleToken(userAccount);
             }
 
             return new String[]{};
-        }catch (NullPointerException exception){
+        }catch (NullPointerException noValidationException){
             loggerService.getWebLogger().warn(loggerService.getFAILED_VALIDATION());
 
             return new String[]{};
@@ -56,14 +83,14 @@ public class TokenService {
         }
     }
 
-    public String[] createEncryptedToken(Account userAccount, String refreshToken){
+    public String[] reCreateBundleTokenWithExistentAccessToken(Account userAccount, String refreshToken, String accessToken){
         try {
-            RSAPrivateKey privateKey = (RSAPrivateKey) keyReaderService.getPrivateKey("src/main/resources/keys/private_key.der");
+            RSAPrivateKey privateKey = (RSAPrivateKey) keyReaderService.getPrivateKey("src/main/resources/keys/bundle_token/private_key.der");
             String csrfToken = createCsrfToken();
             Algorithm algorithm = Algorithm.RSA256(null, privateKey);
             String token = JWT.create()
                     .withKeyId("arcade_1")
-                    .withClaim("access_token", createAccessToken(userAccount))
+                    .withClaim("access_token", newOrExistingAccessToken(accessToken, userAccount))
                     .withClaim("refresh_token", newOrExistingRefreshToken(refreshToken))
                     .withClaim("csrf_token", csrfToken)
                     .sign(algorithm);
@@ -76,9 +103,14 @@ public class TokenService {
         }
     }
 
-    private String[] createEncryptedToken(Account userAccount){
+    private String[] createBundleToken(Account userAccount){
 
-        return createEncryptedToken(userAccount, null);
+        return reCreateBundleTokenWithExistentAccessToken(userAccount, null, null);
+    }
+
+    public String[] reCreateBundleTokenWithExistentRefreshToken(Account userAccount, String refreshToken){
+
+        return reCreateBundleTokenWithExistentAccessToken(userAccount, refreshToken, null);
     }
 
     private String newOrExistingRefreshToken(String refreshToken){
@@ -90,6 +122,15 @@ public class TokenService {
         return createRefreshToken();
     }
 
+    private String newOrExistingAccessToken(String accesstoken, Account userAccount){
+        if(accesstoken != null){
+
+            return accesstoken;
+        }
+
+        return createAccessToken(userAccount);
+    }
+
     private String createAccessToken(Account userAccount) {
         try {
             Algorithm hmac256Algorithm = Algorithm.HMAC256(webshopConfiguration.getJwt().getSignature());
@@ -98,7 +139,7 @@ public class TokenService {
                     .withIssuer(webshopConfiguration.getJwt().getAuthor())
                     .withSubject(userAccount.getUsername())
                     .withIssuedAt(new Date(System.currentTimeMillis()))
-                    .withExpiresAt(new Date(amountOfMinutes(1).getTimeInMillis()))
+                    .withExpiresAt(new Date(amountOfMinutes(15).getTimeInMillis()))
                     .withArrayClaim("role", getRolesFromDao(userAccount).toArray(new String[0]))
                     .sign(hmac256Algorithm);
         } catch (JWTCreationException createJwtException) {
