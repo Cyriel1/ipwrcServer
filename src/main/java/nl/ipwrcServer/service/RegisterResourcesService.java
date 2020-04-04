@@ -36,6 +36,10 @@ public class RegisterResourcesService {
         this.webshopConfiguration = webshopConfiguration;
     }
 
+    public RegisterResourcesService(){
+
+    }
+
     public void bundle(){
         initializeVariables();
         registerResources();
@@ -67,7 +71,6 @@ public class RegisterResourcesService {
                         .setRealm("Webshop ArcadeAccount")
                         .buildAuthFilter()));
         environment.jersey().register(new RolesAllowedDynamicFeature());
-        environment.jersey().register(new InterceptorService(authenticatorService));
     }
 
     private void registerCorsFilter(){
@@ -80,5 +83,4 @@ public class RegisterResourcesService {
         filter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
         filter.setInitParameter(CrossOriginFilter.CHAIN_PREFLIGHT_PARAM, Boolean.FALSE.toString());
     }
-
 }
