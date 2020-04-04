@@ -1,5 +1,6 @@
 package nl.ipwrcServer.service;
 
+import com.google.crypto.tink.aead.AeadConfig;
 import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.setup.Environment;
 import nl.ipwrcServer.configuration.WebshopConfiguration;
@@ -15,6 +16,7 @@ import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.jdbi.v3.core.Jdbi;
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
+import java.security.GeneralSecurityException;
 import java.util.EnumSet;
 
 public class RegisterResourcesService {
@@ -25,19 +27,17 @@ public class RegisterResourcesService {
     private AuthenticatorService authenticatorService;
     private TokenService tokenService;
     private RegisterAccountService registerAccountService;
+    private LoggerService loggerService;
 
     private AccountDAO accountDAO;
     private UserDAO userDAO;
     private ProductDAO productDAO;
 
     public RegisterResourcesService(Jdbi jdbi, Environment environment, WebshopConfiguration webshopConfiguration){
+        this.loggerService = new LoggerService(RegisterResourcesService.class);
         this.jdbi = jdbi;
         this.environment = environment;
         this.webshopConfiguration = webshopConfiguration;
-    }
-
-    public RegisterResourcesService(){
-
     }
 
     public void bundle(){
@@ -48,12 +48,21 @@ public class RegisterResourcesService {
     }
 
     private void initializeVariables(){
+        registerAed();
         accountDAO = jdbi.onDemand(AccountDAO.class);
         userDAO = jdbi.onDemand(UserDAO.class);
         productDAO = jdbi.onDemand(ProductDAO.class);
         authenticatorService = new AuthenticatorService(accountDAO, webshopConfiguration);
         tokenService = new TokenService(accountDAO, webshopConfiguration);
         registerAccountService = new RegisterAccountService(accountDAO);
+    }
+
+    private void registerAed(){
+        try {
+            AeadConfig.register();
+        } catch (GeneralSecurityException registerException) {
+            loggerService.getWebLogger().warn("Tinker Aed has not been registered");
+        }
     }
 
     private void registerResources(){

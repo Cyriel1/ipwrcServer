@@ -28,22 +28,13 @@ public class TokenService {
     private KeyReaderService keyReaderService;
 
     public TokenService(AccountDAO accountDAO, WebshopConfiguration webshopConfiguration){
-        registerAed();
         this.loggerService = new LoggerService(TokenService.class);
         this.keyReaderService = new KeyReaderService();
         this.accountDAO = accountDAO;
         this.webshopConfiguration = webshopConfiguration;
     }
 
-    public void registerAed(){
-        try {
-            AeadConfig.register();
-        } catch (GeneralSecurityException registerException) {
-            loggerService.getWebLogger().warn("Tinker Aed has not been registered");
-        }
-    }
-
-    public String cipherToken(String bundleToken, KeysetHandle keysetHandle){
+    private String cipherToken(String bundleToken, KeysetHandle keysetHandle){
         try {
             Aead aead = AeadFactory.getPrimitive(keysetHandle);
             byte[] cipheredToken = aead.encrypt(bundleToken.getBytes(), null);
@@ -95,7 +86,7 @@ public class TokenService {
                     .withClaim("csrf_token", csrfToken)
                     .sign(algorithm);
 
-            return new String[]{token, csrfToken};
+            return new String[]{cipherToken(token, keyReaderService.getAedKey()), csrfToken};
         } catch (JWTCreationException exception){
             loggerService.getWebLogger().warn("FAILED TO CREATE ENCRYPTED TOKEN");
 

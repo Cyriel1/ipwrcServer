@@ -6,11 +6,17 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.google.crypto.tink.Aead;
+import com.google.crypto.tink.KeysetHandle;
+import com.google.crypto.tink.aead.AeadFactory;
 import io.dropwizard.auth.Authenticator;
 import nl.ipwrcServer.configuration.WebshopConfiguration;
 import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.model.Token;
 import nl.ipwrcServer.persistence.AccountDAO;
+
+import javax.xml.bind.DatatypeConverter;
+import java.security.GeneralSecurityException;
 import java.security.interfaces.RSAPublicKey;
 import java.util.*;
 
@@ -34,7 +40,21 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
     @Override
     public Optional<Account> authenticate(Token credentials) {
 
-        return verifyAccessToken(verifyBundleToken(credentials));
+        return verifyAccessToken(decipherToken(credentials, keyReaderService.getAedKey()));
+    }
+
+    public Optional<DecodedJWT> decipherToken(Token credentials, KeysetHandle keysetHandle){
+        try{
+            byte[] cipheredToken = DatatypeConverter.parseHexBinary(credentials.getTokenBundle());
+            Aead aead = AeadFactory.getPrimitive(keysetHandle);
+            byte[] decipheredToken = aead.decrypt(cipheredToken, null);
+
+            return verifyBundleToken(new Token(new String(decipheredToken), credentials.getCsrfToken()));
+        }catch (GeneralSecurityException decipherException){
+            loggerService.getWebLogger().warn("Failed to decipher bundle token");
+
+            return Optional.empty();
+        }
     }
 
     private Optional<DecodedJWT> verifyBundleToken(Token credentials){

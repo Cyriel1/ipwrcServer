@@ -1,12 +1,13 @@
 package nl.ipwrcServer.service;
 
+import com.google.crypto.tink.CleartextKeysetHandle;
+import com.google.crypto.tink.JsonKeysetReader;
+import com.google.crypto.tink.KeysetHandle;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.KeyFactory;
-import java.security.NoSuchAlgorithmException;
-import java.security.PrivateKey;
-import java.security.PublicKey;
+import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
@@ -65,6 +66,19 @@ public class KeyReaderService {
 
             return null;
         }
+    }
+
+    public KeysetHandle getAedKey(){
+        try {
+
+            return CleartextKeysetHandle.read(JsonKeysetReader.withFile(new File("src/main/resources/keys/encrypting/encrypting_key.json")));
+        } catch (GeneralSecurityException readException) {
+            loggerService.getWebLogger().warn("Failed to read Aed encrypting Json Key");
+        } catch (IOException noFileFoundException) {
+            loggerService.getWebLogger().warn("Failed to find file");
+        }
+
+        return null;
     }
 
 }
