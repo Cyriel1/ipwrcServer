@@ -1,16 +1,11 @@
 package nl.ipwrcServer.resources;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import io.dropwizard.auth.Auth;
-import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.model.Product;
 import nl.ipwrcServer.persistence.ProductDAO;
 import nl.ipwrcServer.service.ImageService;
 import nl.ipwrcServer.service.JsonViewService;
-import javax.annotation.security.RolesAllowed;
-import javax.validation.Valid;
 import javax.ws.rs.*;
-import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 

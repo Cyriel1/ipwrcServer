@@ -23,7 +23,7 @@
     validationQueryTimeout: 3s
 
   cors:
-      allowedOrigins: "http://localhost:4200"
+      allowedOrigins: "http://localhost:4200, http://arcadegameground-com.stackstaging.com"
       allowedHeaders: "X-Csrf-Protection,Authorization,X-Requested-With,Content-Type,Accept,Origin"
       allowedMethods: "OPTIONS,GET,PUT,POST,DELETE,HEAD"
 

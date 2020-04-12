@@ -10,9 +10,6 @@ import java.util.List;
 
 public interface AccountDAO {
 
-    @SqlQuery("SELECT * FROM `Account` INNER JOIN `Role` ON `Account`.`accountID` = `Role`.`roleID`")
-    List<Account> getAllAccounts();
-
     @SqlQuery("SELECT `username` FROM `Account")
     List<Account> getAllUsernames();
 

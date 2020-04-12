@@ -14,6 +14,9 @@ public class User{
     @JsonView(JsonViewService.Public.class)
     private String firstName;
 
+    @JsonView(JsonViewService.Public.class)
+    private String addition;
+
     @NotEmpty
     @JsonView(JsonViewService.Public.class)
     private String lastName;
@@ -21,10 +24,6 @@ public class User{
     @NotEmpty
     @JsonView(JsonViewService.Public.class)
     private String emailAddress;
-
-    @NotEmpty
-    @JsonView(JsonViewService.Public.class)
-    private String profilePicture;
 
     @NotEmpty
     @JsonView(JsonViewService.Public.class)
@@ -49,9 +48,6 @@ public class User{
     @NotEmpty
     @JsonView(JsonViewService.Public.class)
     private int houseNumber;
-
-    @JsonView(JsonViewService.Public.class)
-    private String addition;
 
     @NotEmpty
     @JsonView(JsonViewService.Public.class)
@@ -91,14 +87,6 @@ public class User{
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
-    }
-
-    public String getProfilePicture() {
-        return profilePicture;
-    }
-
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
     }
 
     public String getGender() {

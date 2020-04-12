@@ -5,6 +5,7 @@ import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.model.Cart;
 import nl.ipwrcServer.persistence.CartDAO;
 import javax.annotation.security.RolesAllowed;
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -24,7 +25,7 @@ public class CartResource {
     @Path("/sendCart")
     @Consumes({MediaType.APPLICATION_JSON})
     @RolesAllowed("KLANT")
-    public String[] addCartItems(@Auth Account account, List<Cart> cart){
+    public String[] addCartItems(@Auth Account account, @Valid List<Cart> cart){
         cartDAO.insertUserCartInfo(account, cart);
 
         return new String[]{};

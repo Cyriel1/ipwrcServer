@@ -1,9 +1,12 @@
 package nl.ipwrcServer.resources;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import nl.ipwrcServer.model.User;
 import nl.ipwrcServer.persistence.UserDAO;
+import nl.ipwrcServer.service.JsonViewService;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-
+import java.util.List;
 
 @Path("/user")
 public class UserResource {
@@ -15,11 +18,12 @@ public class UserResource {
     }
 
     @GET
-    @Path("/{name}")
+    @Path("/getUsers")
     @Produces({MediaType.APPLICATION_JSON})
-    public String getGreeting(@PathParam("name") String name){
+    @JsonView(JsonViewService.Public.class)
+    public List<User> getUsers(){
 
-        return "Hello, " + name + "!";
+        return userDAO.getUsers();
     }
 
 }
