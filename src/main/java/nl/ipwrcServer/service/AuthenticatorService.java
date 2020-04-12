@@ -131,7 +131,7 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
 
             if(credentials.isPresent()){
                 DecodedJWT verifiedRefreshToken = verifiesRefreshToken.verify(credentials.get().getClaim("refresh_token").asString());
-                Account userAccount = new Account(accessToken.getSubject(), accessToken.getClaim("role").asArray(String.class));
+                Account userAccount = new Account(accountDAO.getAccountId(accessToken.getSubject()), accessToken.getSubject(), accessToken.getClaim("role").asArray(String.class));
                 authBundleAndCsrfToken = tokenService.reCreateBundleTokenWithExistentRefreshToken(userAccount, verifiedRefreshToken.getToken());
 
                 return Optional.of(userAccount);
@@ -149,10 +149,10 @@ public class AuthenticatorService implements Authenticator<Token, Account> {
     private Optional<Account> checkIfUsernameInTokenIsValid(DecodedJWT verifiedAccessToken, String existentRefreshToken){
         try{
             if(accountDAO.checkIfUsernameExist(verifiedAccessToken.getSubject()).equals(verifiedAccessToken.getSubject())){
-                Account userAccount = new Account(verifiedAccessToken.getSubject(), verifiedAccessToken.getClaim("role").asArray(String.class));
-                authBundleAndCsrfToken = tokenService.reCreateBundleTokenWithExistentAccessToken(userAccount, existentRefreshToken ,verifiedAccessToken.getToken());
+                Account userAccount = new Account(accountDAO.getAccountId(verifiedAccessToken.getSubject()), verifiedAccessToken.getSubject(), verifiedAccessToken.getClaim("role").asArray(String.class));
+                authBundleAndCsrfToken = tokenService.reCreateBundleTokenWithExistentAccessToken(userAccount, existentRefreshToken, verifiedAccessToken.getToken());
 
-                return Optional.of(new Account(verifiedAccessToken.getSubject(), verifiedAccessToken.getClaim("role").asArray(String.class)));
+                return Optional.of(new Account(accountDAO.getAccountId(verifiedAccessToken.getSubject()), verifiedAccessToken.getSubject(), verifiedAccessToken.getClaim("role").asArray(String.class)));
             }
 
             return Optional.empty();

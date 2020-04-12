@@ -25,7 +25,8 @@ public class Account implements Principal {
 
     }
 
-    public Account(String username, String[] roles){
+    public Account(long accountID, String username, String[] roles){
+        this.accountID = accountID;
         this.username = username;
         this.roles = roles;
     }

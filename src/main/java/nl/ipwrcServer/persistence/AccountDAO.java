@@ -32,4 +32,7 @@ public interface AccountDAO {
     @SqlQuery("SELECT `role` FROM `Role` INNER JOIN `Account` ON `Role`.`roleID` = `Account`.`accountID` WHERE `username` = :username AND `password` = :password")
     List<Account> getAccountRoles(@BindBean Account account);
 
+    @SqlQuery("SELECT `accountID` FROM `Account` WHERE `username` = :username")
+    long getAccountId(@Bind("username") String username);
+
 }

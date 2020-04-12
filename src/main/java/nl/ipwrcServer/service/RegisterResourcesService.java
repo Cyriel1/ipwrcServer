@@ -2,13 +2,16 @@ package nl.ipwrcServer.service;
 
 import com.google.crypto.tink.aead.AeadConfig;
 import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.setup.Environment;
 import nl.ipwrcServer.configuration.WebshopConfiguration;
 import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.persistence.AccountDAO;
+import nl.ipwrcServer.persistence.CartDAO;
 import nl.ipwrcServer.persistence.ProductDAO;
 import nl.ipwrcServer.persistence.UserDAO;
 import nl.ipwrcServer.resources.AccountResource;
+import nl.ipwrcServer.resources.CartResource;
 import nl.ipwrcServer.resources.ProductResource;
 import nl.ipwrcServer.resources.UserResource;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
@@ -29,10 +32,12 @@ public class RegisterResourcesService {
     private RegisterAccountService registerAccountService;
     private LoggerService loggerService;
     private BlackListService blackListService;
+    private ImageService imageService;
 
     private AccountDAO accountDAO;
     private UserDAO userDAO;
     private ProductDAO productDAO;
+    private CartDAO cartDAO;
 
     public RegisterResourcesService(Jdbi jdbi, Environment environment, WebshopConfiguration webshopConfiguration){
         this.loggerService = new LoggerService(RegisterResourcesService.class);
@@ -53,10 +58,12 @@ public class RegisterResourcesService {
         accountDAO = jdbi.onDemand(AccountDAO.class);
         userDAO = jdbi.onDemand(UserDAO.class);
         productDAO = jdbi.onDemand(ProductDAO.class);
+        cartDAO = jdbi.onDemand(CartDAO.class);
         blackListService = new BlackListService();
         authenticatorService = new AuthenticatorService(accountDAO, webshopConfiguration, blackListService);
         tokenService = new TokenService(accountDAO, webshopConfiguration);
         registerAccountService = new RegisterAccountService(accountDAO);
+        imageService = new ImageService();
     }
 
     private void registerAed(){
@@ -70,7 +77,8 @@ public class RegisterResourcesService {
     private void registerResources(){
         environment.jersey().register(new AccountResource(accountDAO, tokenService, registerAccountService));
         environment.jersey().register(new UserResource(userDAO));
-        environment.jersey().register(new ProductResource(productDAO));
+        environment.jersey().register(new ProductResource(productDAO, imageService));
+        environment.jersey().register(new CartResource(cartDAO));
     }
 
     private void registerAuthentication(){
@@ -82,6 +90,7 @@ public class RegisterResourcesService {
                         .setRealm("Webshop ArcadeAccount")
                         .buildAuthFilter()));
         environment.jersey().register(new RolesAllowedDynamicFeature());
+        environment.jersey().register(new AuthValueFactoryProvider.Binder<>(Account.class));
     }
 
     private void registerCorsFilter(){

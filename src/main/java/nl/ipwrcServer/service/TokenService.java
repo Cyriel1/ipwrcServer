@@ -158,7 +158,7 @@ public class TokenService {
             return JWT.create()
                     .withIssuer(webshopConfiguration.getJwt().getAuthor())
                     .withIssuedAt(new Date(System.currentTimeMillis()))
-                    .withExpiresAt(new Date(amountOfHours(2).getTimeInMillis()))
+                    .withExpiresAt(new Date(amountOfHours(4).getTimeInMillis()))
                     .sign(hmac256Algorithm);
         } catch (JWTCreationException createJwtException) {
             loggerService.getWebLogger().warn(loggerService.getFAILED_TOKEN_CREATION());
@@ -188,4 +188,5 @@ public class TokenService {
 
         return addMinutes;
     }
+
 }
