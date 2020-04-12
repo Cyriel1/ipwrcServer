@@ -1,7 +1,9 @@
 package nl.ipwrcServer;
 
 import io.dropwizard.Application;
+import io.dropwizard.forms.MultiPartBundle;
 import io.dropwizard.jdbi3.JdbiFactory;
+import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import nl.ipwrcServer.configuration.WebshopConfiguration;
 import nl.ipwrcServer.service.RegisterMappersService;
@@ -12,6 +14,11 @@ public class WebshopApplication extends Application<WebshopConfiguration> {
 
     public static void main(String[] args) throws Exception{
         new WebshopApplication().run(args);
+    }
+
+    @Override
+    public void initialize(Bootstrap<WebshopConfiguration> bootstrap) {
+        bootstrap.addBundle(new MultiPartBundle());
     }
 
     @Override

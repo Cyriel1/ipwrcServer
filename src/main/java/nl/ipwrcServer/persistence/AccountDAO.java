@@ -10,9 +10,6 @@ import java.util.List;
 
 public interface AccountDAO {
 
-    @SqlQuery("SELECT * FROM `Account` INNER JOIN `Role` ON `Account`.`accountID` = `Role`.`roleID`")
-    List<Account> getAllAccounts();
-
     @SqlQuery("SELECT `username` FROM `Account")
     List<Account> getAllUsernames();
 
@@ -31,5 +28,8 @@ public interface AccountDAO {
 
     @SqlQuery("SELECT `role` FROM `Role` INNER JOIN `Account` ON `Role`.`roleID` = `Account`.`accountID` WHERE `username` = :username AND `password` = :password")
     List<Account> getAccountRoles(@BindBean Account account);
+
+    @SqlQuery("SELECT `accountID` FROM `Account` WHERE `username` = :username")
+    long getAccountId(@Bind("username") String username);
 
 }

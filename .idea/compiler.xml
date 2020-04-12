@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="server" />
         <module name="IPRWCserver" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="IPRWCserver" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

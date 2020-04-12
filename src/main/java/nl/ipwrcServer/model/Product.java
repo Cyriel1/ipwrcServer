@@ -1,5 +1,6 @@
 package nl.ipwrcServer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import nl.ipwrcServer.service.JsonViewService;
 import javax.validation.constraints.NotEmpty;
@@ -18,12 +19,19 @@ public class Product {
     @JsonView(JsonViewService.Public.class)
     private float productPrice;
 
-    @JsonView(JsonViewService.Public.class)
+    @JsonView(JsonViewService.Protected.class)
     private String productDescription;
 
     @NotEmpty
-    @JsonView(JsonViewService.Public.class)
+    @JsonView(JsonViewService.Protected.class)
     private String productStatus;
+
+    @JsonIgnore
+    private String productUrlImage;
+
+    @NotEmpty
+    @JsonView(JsonViewService.Public.class)
+    private String productBase64Image;
 
     public int getProductID() {
         return productID;
@@ -63,6 +71,22 @@ public class Product {
 
     public void setProductStatus(String productStatus) {
         this.productStatus = productStatus;
+    }
+
+    public String getProductUrlImage() {
+        return productUrlImage;
+    }
+
+    public void setProductUrlImage(String productUrlImage) {
+        this.productUrlImage = productUrlImage;
+    }
+
+    public String getProductBase64Image() {
+        return productBase64Image;
+    }
+
+    public void setProductBase64Image(String productBase64Image) {
+        this.productBase64Image = productBase64Image;
     }
 
 }

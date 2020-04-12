@@ -7,7 +7,7 @@ import java.util.List;
 public interface UserDAO {
 
     @SqlQuery("SELECT * FROM `User`")
-    User getUsers();
+    List<User> getUsers();
 
 }
 

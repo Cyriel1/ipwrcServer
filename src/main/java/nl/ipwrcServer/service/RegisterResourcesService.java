@@ -1,13 +1,17 @@
 package nl.ipwrcServer.service;
 
+import com.google.crypto.tink.aead.AeadConfig;
 import io.dropwizard.auth.AuthDynamicFeature;
+import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.setup.Environment;
 import nl.ipwrcServer.configuration.WebshopConfiguration;
 import nl.ipwrcServer.model.Account;
 import nl.ipwrcServer.persistence.AccountDAO;
+import nl.ipwrcServer.persistence.CartDAO;
 import nl.ipwrcServer.persistence.ProductDAO;
 import nl.ipwrcServer.persistence.UserDAO;
 import nl.ipwrcServer.resources.AccountResource;
+import nl.ipwrcServer.resources.CartResource;
 import nl.ipwrcServer.resources.ProductResource;
 import nl.ipwrcServer.resources.UserResource;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
@@ -15,6 +19,7 @@ import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.jdbi.v3.core.Jdbi;
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
+import java.security.GeneralSecurityException;
 import java.util.EnumSet;
 
 public class RegisterResourcesService {
@@ -25,12 +30,17 @@ public class RegisterResourcesService {
     private AuthenticatorService authenticatorService;
     private TokenService tokenService;
     private RegisterAccountService registerAccountService;
+    private LoggerService loggerService;
+    private BlackListService blackListService;
+    private ImageService imageService;
 
     private AccountDAO accountDAO;
     private UserDAO userDAO;
     private ProductDAO productDAO;
+    private CartDAO cartDAO;
 
     public RegisterResourcesService(Jdbi jdbi, Environment environment, WebshopConfiguration webshopConfiguration){
+        this.loggerService = new LoggerService(RegisterResourcesService.class);
         this.jdbi = jdbi;
         this.environment = environment;
         this.webshopConfiguration = webshopConfiguration;
@@ -43,36 +53,48 @@ public class RegisterResourcesService {
         registerCorsFilter();
     }
 
-    public void initializeVariables(){
+    private void initializeVariables(){
+        registerAed();
         accountDAO = jdbi.onDemand(AccountDAO.class);
         userDAO = jdbi.onDemand(UserDAO.class);
         productDAO = jdbi.onDemand(ProductDAO.class);
-        authenticatorService = new AuthenticatorService(accountDAO, webshopConfiguration);
+        cartDAO = jdbi.onDemand(CartDAO.class);
+        blackListService = new BlackListService();
+        authenticatorService = new AuthenticatorService(accountDAO, webshopConfiguration, blackListService);
         tokenService = new TokenService(accountDAO, webshopConfiguration);
         registerAccountService = new RegisterAccountService(accountDAO);
+        imageService = new ImageService();
     }
 
-    public void registerResources(){
+    private void registerAed(){
+        try {
+            AeadConfig.register();
+        } catch (GeneralSecurityException registerException) {
+            loggerService.getWebLogger().warn("Tinker Aed has not been registered");
+        }
+    }
+
+    private void registerResources(){
         environment.jersey().register(new AccountResource(accountDAO, tokenService, registerAccountService));
         environment.jersey().register(new UserResource(userDAO));
-        environment.jersey().register(new ProductResource(productDAO));
+        environment.jersey().register(new ProductResource(productDAO, imageService));
+        environment.jersey().register(new CartResource(cartDAO));
     }
 
-    public void registerAuthentication(){
-        final String PREFIX = "Bearer";
-        final String REALM = "Webshop ArcadeAccount";
+    private void registerAuthentication(){
         environment.jersey().register(new AuthDynamicFeature(
-                new OAuthJwtAndCsrfCredentialAuthFilter.Builder<Account>()
+                new OAuthCredentialsAuthFilter.Builder<Account>()
                         .setAuthenticator(authenticatorService)
                         .setAuthorizer(new AuthorizeService())
-                        .setPrefix(PREFIX)
-                        .setRealm(REALM)
+                        .setPrefix("Bearer")
+                        .setRealm("Webshop ArcadeAccount")
                         .buildAuthFilter()));
-        environment.jersey().register(RolesAllowedDynamicFeature.class);
+        environment.jersey().register(new RolesAllowedDynamicFeature());
+        environment.jersey().register(new AuthValueFactoryProvider.Binder<>(Account.class));
     }
 
-    public void registerCorsFilter(){
-        final FilterRegistration.Dynamic filter = environment.servlets().addFilter("CrossOriginFilter", CrossOriginFilter.class);
+    private void registerCorsFilter(){
+        final FilterRegistration.Dynamic filter = environment.servlets().addFilter("CrossOriginFilter", new CrossOriginFilter());
 
         filter.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, webshopConfiguration.getCors().getAllowedOrigins());
         filter.setInitParameter(CrossOriginFilter.ALLOWED_HEADERS_PARAM, webshopConfiguration.getCors().getAllowedHeaders());
@@ -81,5 +103,4 @@ public class RegisterResourcesService {
         filter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
         filter.setInitParameter(CrossOriginFilter.CHAIN_PREFLIGHT_PARAM, Boolean.FALSE.toString());
     }
-
 }

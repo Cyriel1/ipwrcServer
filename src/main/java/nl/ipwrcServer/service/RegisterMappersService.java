@@ -1,6 +1,7 @@
 package nl.ipwrcServer.service;
 
 import nl.ipwrcServer.model.Account;
+import nl.ipwrcServer.model.Cart;
 import nl.ipwrcServer.model.Product;
 import nl.ipwrcServer.model.User;
 import org.jdbi.v3.core.Jdbi;
@@ -13,7 +14,8 @@ public class RegisterMappersService {
     private final Class[] registerRowClasses = new Class[] {
             Account.class,
             User.class,
-            Product.class
+            Product.class,
+            Cart.class
     };
 
     public RegisterMappersService(Jdbi jdbi){

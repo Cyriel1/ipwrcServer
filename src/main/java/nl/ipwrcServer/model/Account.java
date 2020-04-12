@@ -1,28 +1,20 @@
 package nl.ipwrcServer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-import io.dropwizard.validation.OneOf;
-import nl.ipwrcServer.service.JsonViewService;
 import javax.validation.constraints.NotEmpty;
 import java.security.Principal;
 
 public class Account implements Principal {
 
-    @NotEmpty
     @JsonIgnore
     private long accountID;
 
     @NotEmpty
-    @JsonView(JsonViewService.Public.class)
     private String username;
 
     @NotEmpty
-    @JsonView(JsonViewService.Public.class)
     private String password;
 
-    @NotEmpty
-    @OneOf(value = {"ADMIN", "KLANT"}, ignoreCase = true, ignoreWhitespace = true)
     @JsonIgnore
     private String role;
 
@@ -33,7 +25,8 @@ public class Account implements Principal {
 
     }
 
-    public Account(String username, String[] roles){
+    public Account(long accountID, String username, String[] roles){
+        this.accountID = accountID;
         this.username = username;
         this.roles = roles;
     }
